@@ -5,14 +5,14 @@ import { CollectionSupplements, Supplement } from "../../../models";
 type Props = {
   collectionSupplements: CollectionSupplements[];
   supplements: Record<string, Supplement[]>;
-  addSupplementMainBasket: (id: string, collectionId: string) => void;
+  // addSupplementMainBasket: (id: string, collectionId: string) => void;
 };
 
 const MainSupplements = (props: Props) => {
   return (
     <div>
       {props.collectionSupplements.map((cl) => {
-        let collectionIndigenous = props.supplements[cl.id];
+        const collectionIndigenous = props.supplements[cl.id];
         return (
           <div className={classes.indigenous_card} key={cl.id}>
             <div className={classes.tittle}>
@@ -22,7 +22,7 @@ const MainSupplements = (props: Props) => {
               <SupplementsCard
                 collectionIndigenous={collectionIndigenous}
                 id={cl.id}
-                addIndigenousManBasket={props.addSupplementMainBasket}
+                // addIndigenousManBasket={props.addSupplementMainBasket}
               />
             </div>
           </div>

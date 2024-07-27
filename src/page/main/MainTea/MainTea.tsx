@@ -2,13 +2,14 @@ import classes from "./MainTea.module.css";
 import { useState } from "react";
 import Modal from "../../../Components/Modal";
 import { Tea } from "../../../models";
+import teaStore from "../../../stores/teaStore";
+import { observer } from "mobx-react-lite";
 
 type Props = {
   tea: Tea[];
-  addTeaManBasket: (id: string) => void;
 };
 
-const MainTea = (props: Props) => {
+const MainTea = observer((props: Props) => {
   const [modalActive, setModalActive] = useState<boolean>(false);
   const [description, setDescription] = useState<string>("");
 
@@ -18,7 +19,7 @@ const MainTea = (props: Props) => {
         <ul className={classes.tea_card}>
           {props.tea.map((t) => {
             const onAddHandler = () => {
-              props.addTeaManBasket(t.id);
+              teaStore.addTeaManBasket(t.id);
               t.isEnough = true;
             };
             const onDescriptionHandler = () => {
@@ -58,6 +59,6 @@ const MainTea = (props: Props) => {
       />
     </div>
   );
-};
+});
 
 export default MainTea;
