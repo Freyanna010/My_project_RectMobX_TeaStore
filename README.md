@@ -1,1 +1,1 @@
-# My_project_RectMobX_TeaStore
+# My_project_ReactMobX_TeaStore
