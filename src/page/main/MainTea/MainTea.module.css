@@ -1,0 +1,43 @@
+.tea_card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.tea_cardEnough {
+    opacity: 50%;
+}
+.icon {
+    padding: 10px 50px;
+}
+.icon>img {
+    width: 200px;
+}
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.button_add {
+    margin-left: 20px;
+    background: none;
+    width: 30px;
+    height: 30px;
+}
+.button_add>img {
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+.button {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.button>button {
+    width: 140px;
+}
+
+

@@ -1,0 +1,23 @@
+.indigenous_card{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+.indigenous_card:default {
+    opacity: 10%;
+}
+.isEnough {
+    opacity: 10%;
+}
+
+.icon{
+    padding: 25px;
+}
+.title{
+    text-align: center; 
+    
+}
+img {  
+    width: 80px;
+    border-radius: 50%;
+}

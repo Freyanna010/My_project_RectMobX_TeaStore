@@ -1,0 +1,24 @@
+.man {
+    display: grid;
+    grid-template-areas:
+        "h h h "
+        "i i b";
+    grid-template-rows: 2fr 8fr;
+    grid-template-columns: 6fr 1.5fr;
+}
+
+.man_indigenous {
+    grid-area: i;
+}
+
+.man_tea {
+    grid-area: h;
+}
+
+.man_basket {
+    grid-area: b;
+    background-color: blueviolet;
+    background-image: url(./../public/bg_basket_div.jpeg);
+    width: 400px;
+    margin: 30px 10px;
+}
