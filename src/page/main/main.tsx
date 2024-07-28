@@ -2,41 +2,24 @@ import classes from "./main.module.css";
 import MainTea from "./MainTea";
 import MainSupplements from "./MainSupplements";
 import MainBasket from "./MainBasket";
-import { CollectionSupplements, Supplement, Tea } from "../../models";
+import { observer } from "mobx-react-lite";
 
-type Props = {
-  tea: Tea[];
-  collectionSupplements: CollectionSupplements[];
-  supplements: Record<string, Supplement[]>;
-  addTeaMainBasket: (id: string) => void;
-  mainTeaBasket: Tea[];
-  addSupplementMainBasket: (id: string, collectionId: string) => void;
-  mainSupplementsBasket: Supplement[];
-};
 
-const Main = (props: Props) => {
+const Main = () => {
   return (
     <div className={classes.man}>
       <div className={classes.man_tea}>
-        <MainTea tea={props.tea} addTeaManBasket={props.addTeaMainBasket} />
+        <MainTea />
       </div>
 
       <div className={classes.man_indigenous}>
-        <MainSupplements
-          collectionSupplements={props.collectionSupplements}
-          supplements={props.supplements}
-          addSupplementMainBasket={props.addSupplementMainBasket}
-        />
+        <MainSupplements />
       </div>
 
       <div className={classes.man_basket}>
-        <MainBasket
-          manTeaBasket={props.mainTeaBasket}
-          mainSupplementsBasket={props.mainSupplementsBasket}
-        />
+        <MainBasket />
       </div>
     </div>
   );
 };
-
-export default Main;
+export default observer(Main);

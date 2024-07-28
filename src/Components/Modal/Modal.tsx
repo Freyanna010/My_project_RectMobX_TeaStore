@@ -1,3 +1,4 @@
+import { FC } from "react";
 import classes from "./Modal.module.css";
 
 type Props = {
@@ -5,8 +6,7 @@ type Props = {
   setActive: (value: boolean) => void;
   text: string;
 };
-
-const Modal: React.FC<Props> = (props: Props) => {
+const Modal: FC<Props> = (props) => {
   const onCloseHandler = () => {
     props.setActive(false);
   };
@@ -26,11 +26,11 @@ const Modal: React.FC<Props> = (props: Props) => {
           </div>     
              <div className={classes.text}> {props.text} </div>
            <div className={classes.button_more}>
-       <a href="#"> learn more >> </a>
+       <a href="#"> {`learn more >>`} </a>
           </div>
       </div>
     </div>
-  );
+  ); 
 };
 
 export default Modal;

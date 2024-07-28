@@ -1,18 +1,13 @@
 import classes from "./MainBasket.module.css";
-import { Tea, Supplement } from "../../../models";
+import teaStore from "../../../stores/teaStore";
+import { observer } from "mobx-react-lite";
 
-
-type Props = {
-  manTeaBasket: Tea[];
-  mainSupplementsBasket: Supplement[];
-};
-
-const ManBasket = (props: Props) => {
+const ManBasket = () => {
   return (
     <div className={classes.man_basket}>
       <div className={classes.tea}>
         <h2 className={classes.title}> tea: </h2>
-        {props.manTeaBasket.map((t) => {
+        {teaStore.mainTeaBasket.map((t) => {
           return (
             <div className={classes.tea_basket} key={t.id}>
               <div className={classes.icon}>
@@ -29,7 +24,7 @@ const ManBasket = (props: Props) => {
       <div className={classes.indigenous}>
         <ul>
           <h2 className={classes.title}> supplements: </h2>
-          {props.mainSupplementsBasket.map((t) => {
+          {teaStore.mainSupplementsBasket.map((t) => {
             return (
               <li key={t.id}>
                 <div>
@@ -47,4 +42,4 @@ const ManBasket = (props: Props) => {
   );
 };
 
-export default ManBasket;
+export default observer(ManBasket);
