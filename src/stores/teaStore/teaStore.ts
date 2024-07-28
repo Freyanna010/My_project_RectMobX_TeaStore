@@ -28,6 +28,7 @@ class TeaStore {
   addTeaManBasket = (id: string) => {
     const teaForManBasket = this.tea.find((t) => t.id === id);
     if (this.mainTeaBasket.length < 1) {
+      if(teaForManBasket)
       this.mainTeaBasket.push(teaForManBasket);
       console.log(teaForManBasket);
       console.log(this.mainTeaBasket);
@@ -40,7 +41,8 @@ class TeaStore {
       (i) => i.id !== id
     );
     if (this.mainSupplementsBasket.length < 7 && supplementOfManBasket ) {
-  this.mainSupplementsBasket.push(supplementForManBasket)
+      if(supplementForManBasket)
+      this.mainSupplementsBasket.push(supplementForManBasket)
     // } else {
     //   collectionSupplements.forEach((i) => {
     //     i.isEnough = true;
@@ -52,6 +54,7 @@ class TeaStore {
   // setCollectionSupplements(collections: CollectionSupplements[]): void {
   //   this.collectionSupplements = collections;
   // }
+}
 }
 
 export default new TeaStore();
