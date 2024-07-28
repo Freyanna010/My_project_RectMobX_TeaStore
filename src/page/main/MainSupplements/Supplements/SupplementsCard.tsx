@@ -1,24 +1,19 @@
 import classes from "./SupplementsCard.module.css";
 import teaStore from "../../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
+import { Supplement } from "../../../../models";
 
-export type Supplement = {
-  id: string;
-  name: string;
-  img: string;
-};
 type Props = {
-  collectionIndigenous: Array<Supplement>;
+  supplementsForCard: Supplement[];
   id: string;
-  // addIndigenousManBasket: (id: string, collectionId: string) => void;
 };
 
-const SupplementsCard = observer((props: Props) => {
+const SupplementsCard = (props: Props) => {
   return (
     <ul className={classes.indigenous_card}>
-      {props.collectionIndigenous.map((i) => {
+      {props.supplementsForCard.map((i) => {
         const onAddHandler = () => {
-teaStore.addSupplementManBasket(i.id, props.id);
+          teaStore.addSupplementManBasket(i.id, props.id);
         };
         return (
           <li key={i.id}>
@@ -36,6 +31,6 @@ teaStore.addSupplementManBasket(i.id, props.id);
       })}
     </ul>
   );
-});
+};
 
-export default SupplementsCard;
+export default observer(SupplementsCard);

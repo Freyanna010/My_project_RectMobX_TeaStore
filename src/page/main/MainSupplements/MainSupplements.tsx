@@ -1,18 +1,13 @@
 import classes from "./MainSupplements.module.css";
 import SupplementsCard from "./Supplements/SupplementsCard";
-import { CollectionSupplements, Supplement } from "../../../models";
+import teaStore from "../../../stores/teaStore";
+import { observer } from "mobx-react-lite";
 
-type Props = {
-  collectionSupplements: CollectionSupplements[];
-  supplements: Record<string, Supplement[]>;
-  // addSupplementMainBasket: (id: string, collectionId: string) => void;
-};
-
-const MainSupplements = (props: Props) => {
+const MainSupplements = () => {
   return (
     <div>
-      {props.collectionSupplements.map((cl) => {
-        const collectionIndigenous = props.supplements[cl.id];
+      {teaStore.collectionSupplements.map((cl) => {
+        const supplementsForCard = teaStore.supplements[cl.id];
         return (
           <div className={classes.indigenous_card} key={cl.id}>
             <div className={classes.tittle}>
@@ -20,9 +15,8 @@ const MainSupplements = (props: Props) => {
             </div>
             <div className={cl.isEnough ? classes.isEnough : ""}>
               <SupplementsCard
-                collectionIndigenous={collectionIndigenous}
+                supplementsForCard={supplementsForCard}
                 id={cl.id}
-                // addIndigenousManBasket={props.addSupplementMainBasket}
               />
             </div>
           </div>
@@ -32,4 +26,4 @@ const MainSupplements = (props: Props) => {
   );
 };
 
-export default MainSupplements;
+export default observer(MainSupplements);

@@ -2,12 +2,7 @@ import classes from "./MainBasket.module.css";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
 
-// type Props = {
-//   // manTeaBasket: Tea[];
-//   // mainSupplementsBasket: Supplement[];
-// };
-
-const ManBasket = observer( () => {
+const ManBasket = () => {
   return (
     <div className={classes.man_basket}>
       <div className={classes.tea}>
@@ -45,6 +40,6 @@ const ManBasket = observer( () => {
       </div>
     </div>
   );
-});
+};
 
-export default ManBasket;
+export default observer(ManBasket);

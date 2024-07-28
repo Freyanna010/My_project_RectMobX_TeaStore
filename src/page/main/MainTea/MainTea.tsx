@@ -1,23 +1,17 @@
 import classes from "./MainTea.module.css";
 import { useState } from "react";
 import Modal from "../../../Components/Modal";
-import { Tea } from "../../../models";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
 
-type Props = {
-  tea: Tea[];
-};
-
-const MainTea = observer((props: Props) => {
+const MainTea = () => {
   const [modalActive, setModalActive] = useState<boolean>(false);
   const [description, setDescription] = useState<string>("");
-
   return (
     <div>
       {
         <ul className={classes.tea_card}>
-          {props.tea.map((t) => {
+          {teaStore.tea.map((t) => {
             const onAddHandler = () => {
               teaStore.addTeaManBasket(t.id);
               t.isEnough = true;
@@ -51,7 +45,6 @@ const MainTea = observer((props: Props) => {
           })}
         </ul>
       }
-
       <Modal
         active={modalActive}
         setActive={setModalActive}
@@ -59,6 +52,6 @@ const MainTea = observer((props: Props) => {
       />
     </div>
   );
-});
+};
 
-export default MainTea;
+export default observer(MainTea);

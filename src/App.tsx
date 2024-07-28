@@ -12,9 +12,9 @@ const App = observer(() => {
       <Header />
       <div className="container-page">
         <Main
-          collectionSupplements={collectionSupplements}
-          supplements={supplements}
-          tea={tea}
+          // collectionSupplements={collectionSupplements}
+          // supplements={supplements}
+          // tea={tea}
           // addTeaMainBasket={addTeaManBasket}
           // mainTeaBasket={mainTeaBasket}
           // addSupplementMainBasket={addSupplementManBasket}
