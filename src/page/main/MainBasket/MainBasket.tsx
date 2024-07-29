@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { FC } from "react";
 import ButtonAddRemove from "../../../Components/ButtonAddRemove";
 
-const ManBasket: FC = () => {
+const MainBasket: FC = () => {
   // TODO:divide into components? 
   return (
     <div className={classes.man_basket}>
@@ -37,16 +37,16 @@ const ManBasket: FC = () => {
       <div className={classes.indigenous}>
         <ul>
           <h2 className={classes.title}> supplements: </h2>
-          {teaStore.mainSupplementsBasket.map((t) => {
+          {teaStore.mainSupplementsBasket.map((s) => {
             const onRemoveHandler = () => {
-              teaStore.removeSupplementMainBasket(t.id);
+              teaStore.removeSupplementMainBasket(s.id);
             };
             return (
-              <li key={t.id}>
+              <li key={s.id}>
                 <div>
                   <h3>
                     {" "}
-                    {t.name}
+                    {s.name}
                     <ButtonAddRemove
                       onClick={onRemoveHandler}
                       content={"./../../../../public/remove_button.png"}
@@ -54,7 +54,7 @@ const ManBasket: FC = () => {
                   </h3>
                 </div>
                 <div className={classes.icon}>
-                  <img src={t.img} alt={t.name} onClick={onRemoveHandler} />
+                  <img src={s.img} alt={s.name} onClick={onRemoveHandler} />
                 </div>
               </li>
             );
@@ -65,4 +65,4 @@ const ManBasket: FC = () => {
   );
 };
 
-export default observer(ManBasket);
+export default observer(MainBasket);

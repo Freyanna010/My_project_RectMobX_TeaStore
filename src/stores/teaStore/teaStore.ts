@@ -13,6 +13,7 @@ class TeaStore {
   mainTeaBasket: Tea[] = [];
   mainSupplementsBasket: Supplement[] = [];
 
+
   constructor() {
     makeObservable(this, {
       tea: observable,
@@ -24,6 +25,7 @@ class TeaStore {
       addSupplementMainBasket: action,
       removeTeaMainBasket: action,
       removeSupplementMainBasket: action,
+      changeIsEnough: action
     });
   }
 
@@ -46,9 +48,9 @@ class TeaStore {
         this.mainSupplementsBasket.push(supplementForMainBasket);
     } else {
       // TODO:remake opacity effect
-      this.collectionSupplements.forEach((i) => {
-        i.isEnough = true;
-      });
+      // this.collectionSupplements.forEach((i) => {
+      //   i.isEnough = true;
+      // });
     }
   };
   removeTeaMainBasket = () => {
@@ -58,6 +60,14 @@ class TeaStore {
     this.mainSupplementsBasket = this.mainSupplementsBasket.filter(
       (s) => s.id !== id
     );
+  };
+
+  changeIsEnough = () => {
+    this.tea.forEach((t) => {
+      t.id === this.mainTeaBasket[0].id
+        ? (t.isEnough = true)
+        : (t.isEnough = false);
+    });
   };
 }
 export default new TeaStore();

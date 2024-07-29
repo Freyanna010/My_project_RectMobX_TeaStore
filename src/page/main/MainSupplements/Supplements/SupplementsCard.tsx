@@ -13,18 +13,18 @@ type Props = {
 const SupplementsCard: FC<Props> = (props) => {
   return (
     <ul className={classes.indigenous_card}>
-      {props.supplementsForCard.map((i) => {
+      {props.supplementsForCard.map((s) => {
         const onAddHandler = () => {
-          teaStore.addSupplementMainBasket(i.id, props.id);
+          teaStore.addSupplementMainBasket(s.id, props.id);
         };
         return (
-          <li key={i.id}>
+          <li key={s.id}>
             <div className={classes.icon}>
-              <img src={i.img} alt={i.name} />
+              <img src={s.img} alt={s.name} />
             </div>
             <div className={classes.title}>
               <h3>
-                {i.name}
+                {s.name}
 
                 <ButtonAddRemove
                   onClick={onAddHandler}

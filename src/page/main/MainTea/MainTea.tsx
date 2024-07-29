@@ -15,6 +15,7 @@ const MainTea: FC = () => {
           {teaStore.tea.map((t) => {
             const onAddHandler = () => {
               teaStore.addTeaMainBasket(t.id);
+              teaStore.changeIsEnough()
               //  TODO:remake opacity effect, add function filter
               // t.isEnough = true;
             };
