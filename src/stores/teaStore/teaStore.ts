@@ -31,6 +31,8 @@ class TeaStore {
     const teaForMainBasket = this.tea.find((t) => t.id === id);
     if (this.mainTeaBasket.length < 1) {
       if (teaForMainBasket) this.mainTeaBasket.push(teaForMainBasket);
+    } else {
+      if (teaForMainBasket) this.mainTeaBasket[0] = teaForMainBasket;
     }
   };
   addSupplementMainBasket = (id: string, collectionId: string) => {
@@ -49,11 +51,13 @@ class TeaStore {
       });
     }
   };
-  removeTeaMainBasket = (id: string) => {
-    this.mainTeaBasket.filter(t=> t.id !== id)
+  removeTeaMainBasket = () => {
+    this.mainTeaBasket.pop();
   };
   removeSupplementMainBasket = (id: string) => {
-    this.mainSupplementsBasket.filter(s => s.id !== id)
+    this.mainSupplementsBasket = this.mainSupplementsBasket.filter(
+      (s) => s.id !== id
+    );
   };
 }
 export default new TeaStore();

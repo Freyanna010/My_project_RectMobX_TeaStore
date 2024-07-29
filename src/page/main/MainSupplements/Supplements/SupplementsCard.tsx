@@ -3,6 +3,7 @@ import teaStore from "../../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
 import { Supplement } from "../../../../models";
 import { FC } from "react";
+import ButtonAddRemove from "../../../../Components/ButtonAddRemove";
 
 type Props = {
   supplementsForCard: Supplement[];
@@ -24,7 +25,11 @@ const SupplementsCard: FC<Props> = (props) => {
             <div className={classes.title}>
               <h3>
                 {i.name}
-                <button onClick={onAddHandler}>+</button>
+
+                <ButtonAddRemove
+                  onClick={onAddHandler}
+                  content={"./../../../../public/add_button.png"}
+                />
               </h3>
             </div>
           </li>

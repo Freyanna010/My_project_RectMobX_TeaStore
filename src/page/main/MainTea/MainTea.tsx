@@ -3,6 +3,7 @@ import { FC, useState } from "react";
 import Modal from "../../../Components/Modal";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
+import ButtonAddRemove from "../../../Components/ButtonAddRemove";
 
 const MainTea: FC = () => {
   const [modalActive, setModalActive] = useState<boolean>(false);
@@ -15,7 +16,7 @@ const MainTea: FC = () => {
             const onAddHandler = () => {
               teaStore.addTeaMainBasket(t.id);
               //  TODO:remake opacity effect, add function filter
-              t.isEnough = true;
+              // t.isEnough = true;
             };
             const onDescriptionHandler = () => {
               setModalActive(true);
@@ -31,11 +32,10 @@ const MainTea: FC = () => {
                   <img src={t.img} alt={t.name} />
                 </div>
                 <div className={classes.title}>
-                  <h3>{t.name}</h3>
-                  <img
-                    src="./../../../../public/add_button.png"
-                    className={classes.button_add}
+                  <h3>{t.name}</h3>               
+                  <ButtonAddRemove
                     onClick={onAddHandler}
+                    content={"./../../../../public/add_button.png"}
                   />
                 </div>
                 <div className={classes.button}>
