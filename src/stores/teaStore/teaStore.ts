@@ -21,6 +21,9 @@ class TeaStore {
       mainTeaBasket: observable,
       mainSupplementsBasket: observable,
       addTeaMainBasket: action,
+      addSupplementMainBasket: action,
+      removeTeaMainBasket: action,
+      removeSupplementMainBasket: action,
     });
   }
 
@@ -32,7 +35,7 @@ class TeaStore {
   };
   addSupplementMainBasket = (id: string, collectionId: string) => {
     const arrSupplements = this.supplements[collectionId];
-    const supplementForMainBasket = arrSupplements.find((i) => i.id === id);
+    const supplementForMainBasket = arrSupplements.find((s) => s.id === id);
     const supplementOfMainBasket = this.mainSupplementsBasket.every(
       (i) => i.id !== id
     );
@@ -46,7 +49,11 @@ class TeaStore {
       });
     }
   };
- 
+  removeTeaMainBasket = (id: string) => {
+    this.mainTeaBasket.filter(t=> t.id !== id)
+  };
+  removeSupplementMainBasket = (id: string) => {
+    this.mainSupplementsBasket.filter(s => s.id !== id)
+  };
 }
-
 export default new TeaStore();
