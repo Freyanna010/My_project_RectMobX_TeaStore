@@ -5,14 +5,13 @@ import {
   initialSupplementsState,
   initialTeaState,
 } from "./initialStates";
-
 class TeaStore {
   tea: Tea[] = initialTeaState;
   supplements: Record<string, Supplement[]> = initialSupplementsState;
   collectionSupplements: CollectionSupplements[] =
     initialCollectionSupplementsState;
   mainTeaBasket: Tea[] = [];
-  mainSupplementsBasket: Supplement[] = []
+  mainSupplementsBasket: Supplement[] = [];
 
   constructor() {
     makeObservable(this, {
@@ -21,40 +20,33 @@ class TeaStore {
       collectionSupplements: observable,
       mainTeaBasket: observable,
       mainSupplementsBasket: observable,
-      addTeaManBasket: action,
-
+      addTeaMainBasket: action,
     });
   }
-  addTeaManBasket = (id: string) => {
-    const teaForManBasket = this.tea.find((t) => t.id === id);
+
+  addTeaMainBasket = (id: string) => {
+    const teaForMainBasket = this.tea.find((t) => t.id === id);
     if (this.mainTeaBasket.length < 1) {
-      if(teaForManBasket)
-      this.mainTeaBasket.push(teaForManBasket);
-      console.log(teaForManBasket);
-      console.log(this.mainTeaBasket);
+      if (teaForMainBasket) this.mainTeaBasket.push(teaForMainBasket);
     }
   };
-  addSupplementManBasket = (id: string, collectionId: string) => {
+  addSupplementMainBasket = (id: string, collectionId: string) => {
     const arrSupplements = this.supplements[collectionId];
-    const supplementForManBasket = arrSupplements.find((i) => i.id === id);
-    const supplementOfManBasket = this.mainSupplementsBasket.every(
+    const supplementForMainBasket = arrSupplements.find((i) => i.id === id);
+    const supplementOfMainBasket = this.mainSupplementsBasket.every(
       (i) => i.id !== id
     );
-    if (this.mainSupplementsBasket.length < 7 && supplementOfManBasket ) {
-      if(supplementForManBasket)
-      this.mainSupplementsBasket.push(supplementForManBasket)
-    // } else {
-    //   collectionSupplements.forEach((i) => {
-    //     i.isEnough = true;
-    //   });
-    //   setCollectionSupplements([...collectionSupplements]);
-    // }
+    if (this.mainSupplementsBasket.length < 7 && supplementOfMainBasket) {
+      if (supplementForMainBasket)
+        this.mainSupplementsBasket.push(supplementForMainBasket);
+    } else {
+      // TODO:remake opacity effect
+      this.collectionSupplements.forEach((i) => {
+        i.isEnough = true;
+      });
+    }
   };
-
-  // setCollectionSupplements(collections: CollectionSupplements[]): void {
-  //   this.collectionSupplements = collections;
-  // }
-}
+ 
 }
 
 export default new TeaStore();

@@ -1,10 +1,10 @@
 import classes from "./MainTea.module.css";
-import { useState } from "react";
+import { FC, useState } from "react";
 import Modal from "../../../Components/Modal";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
 
-const MainTea = () => {
+const MainTea: FC = () => {
   const [modalActive, setModalActive] = useState<boolean>(false);
   const [description, setDescription] = useState<string>("");
   return (
@@ -13,7 +13,8 @@ const MainTea = () => {
         <ul className={classes.tea_card}>
           {teaStore.tea.map((t) => {
             const onAddHandler = () => {
-              teaStore.addTeaManBasket(t.id);
+              teaStore.addTeaMainBasket(t.id);
+              //  TODO:remake opacity effect, add function filter
               t.isEnough = true;
             };
             const onDescriptionHandler = () => {

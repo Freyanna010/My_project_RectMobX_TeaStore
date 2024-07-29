@@ -1,8 +1,9 @@
 import classes from "./MainBasket.module.css";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 
-const ManBasket = () => {
+const ManBasket: FC = () => {
   return (
     <div className={classes.man_basket}>
       <div className={classes.tea}>

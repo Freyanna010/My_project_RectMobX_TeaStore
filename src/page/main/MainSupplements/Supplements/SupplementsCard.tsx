@@ -2,18 +2,19 @@ import classes from "./SupplementsCard.module.css";
 import teaStore from "../../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
 import { Supplement } from "../../../../models";
+import { FC } from "react";
 
 type Props = {
   supplementsForCard: Supplement[];
   id: string;
 };
 
-const SupplementsCard = (props: Props) => {
+const SupplementsCard: FC<Props> = (props) => {
   return (
     <ul className={classes.indigenous_card}>
       {props.supplementsForCard.map((i) => {
         const onAddHandler = () => {
-          teaStore.addSupplementManBasket(i.id, props.id);
+          teaStore.addSupplementMainBasket(i.id, props.id);
         };
         return (
           <li key={i.id}>

@@ -1,6 +1,7 @@
+import { FC } from "react";
 import classes from "./Header.module.css";
 
-const Header = () => {
+const Header: FC = () => {
   return (
     <div className={classes.header}>
       <button>Login</button>

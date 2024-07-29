@@ -3,9 +3,10 @@ import MainTea from "./MainTea";
 import MainSupplements from "./MainSupplements";
 import MainBasket from "./MainBasket";
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 
 
-const Main = () => {
+const Main: FC = () => {
   return (
     <div className={classes.man}>
       <div className={classes.man_tea}>

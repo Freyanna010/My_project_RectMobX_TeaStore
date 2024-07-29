@@ -2,8 +2,9 @@ import classes from "./MainSupplements.module.css";
 import SupplementsCard from "./Supplements/SupplementsCard";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
+import { FC } from "react";
 
-const MainSupplements = () => {
+const MainSupplements: FC = () => {
   return (
     <div>
       {teaStore.collectionSupplements.map((cl) => {
