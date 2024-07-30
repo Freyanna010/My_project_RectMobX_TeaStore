@@ -52,12 +52,13 @@ class TeaStore {
   };
   removeTeaMainBasket = () => {
     this.mainTeaBasket.pop();
+    this.tea.forEach(t => t.isEnough = false)
   };
-  removeSupplementMainBasket = (id: string) => {
+  removeSupplementMainBasket = (id: string) => {    
     this.mainSupplementsBasket = this.mainSupplementsBasket.filter(
       (s) => s.id !== id
-    );
-  };
+    );  
+  };  
   changeIsEnoughTea = () => {
     this.tea.forEach((t) => {
       t.id === this.mainTeaBasket[0].id
@@ -66,11 +67,11 @@ class TeaStore {
     });
   };
   changeIsEnoughSupplements = () => {
-    if (this.mainSupplementsBasket.length >= 6) {
-      this.collectionSupplements.forEach((i) => {
-        i.isEnough = true;
-      });
-    }
+    this.collectionSupplements.forEach((i) => {
+    this.mainSupplementsBasket.length >= 6
+      ? (i.isEnough = true)
+      : (i.isEnough = false);
+    });
   };
 }
 export default new TeaStore();

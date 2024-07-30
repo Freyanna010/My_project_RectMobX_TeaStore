@@ -10,6 +10,10 @@ justify-content: space-between;
     opacity: 10%;
 }
 
+.isAdd {
+    box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.91);
+}
+
 .icon{
     padding: 25px;
 }

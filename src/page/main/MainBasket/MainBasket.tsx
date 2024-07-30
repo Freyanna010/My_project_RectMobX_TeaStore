@@ -11,8 +11,10 @@ const MainBasket: FC = () => {
       <div className={classes.tea}>
         <h2 className={classes.title}> tea: </h2>
         {teaStore.mainTeaBasket.map((t) => {
-          const onRemoveHandler = () => {
+          const onRemoveHandler = () => {            
             teaStore.removeTeaMainBasket();
+            teaStore.changeIsEnoughTea();
+       
           };
           return (
             <div className={classes.tea_basket} key={t.id}>
@@ -38,7 +40,10 @@ const MainBasket: FC = () => {
           <h2 className={classes.title}> supplements: </h2>
           {teaStore.mainSupplementsBasket.map((s) => {
             const onRemoveHandler = () => {
+              // TODO:ругается, но по-другому пока не получилось😪
+              s.isAdd=false
               teaStore.removeSupplementMainBasket(s.id);
+              teaStore.changeIsEnoughSupplements()
             };
             return (
               <li key={s.id}>

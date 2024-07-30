@@ -22,10 +22,14 @@ const SupplementsCard: FC<Props> = (props) => {
               teaStore.changeIsEnoughSupplements();             
             };
             return (
-              <li key={s.id} className={s.isAdd  ? classes.isEnough : ""}>
-                <div >
+              <li key={s.id}>
+                <div>
                   <div className={classes.icon}>
-                    <img src={s.img} alt={s.name} />
+                    <img
+                      src={s.img}
+                      alt={s.name}
+                      className={s.isAdd ? classes.isAdd : ""}
+                    />
                   </div>
                   <div className={classes.title}>
                     <h3>
