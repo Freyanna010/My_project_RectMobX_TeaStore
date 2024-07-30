@@ -2,6 +2,7 @@ export type Supplement = {
   id: string;
   name: string;
   img: string;
+  isAdd: boolean;
 };
 
 export type CollectionSupplements = {

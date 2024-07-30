@@ -20,8 +20,7 @@ const MainBasket: FC = () => {
                 <img src={t.img} alt={t.name} onClick={onRemoveHandler} />
               </div>
               <div>
-                <h3>
-                  {" "}
+                <h3>                 
                   {t.name}
                   <ButtonAddRemove
                     onClick={onRemoveHandler}
@@ -44,8 +43,7 @@ const MainBasket: FC = () => {
             return (
               <li key={s.id}>
                 <div>
-                  <h3>
-                    {" "}
+                  <h3>                    
                     {s.name}
                     <ButtonAddRemove
                       onClick={onRemoveHandler}

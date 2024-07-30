@@ -14,10 +14,12 @@ const MainSupplements: FC = () => {
             <div className={classes.tittle}>
               <h3>Choose a {cl.name}</h3>
             </div>
+            {cl.isEnough && <div>IS ENOUGH!</div>}
             <div className={cl.isEnough ? classes.isEnough : ""}>
               <SupplementsCard
                 supplementsForCard={supplementsForCard}
                 id={cl.id}
+                isEnough={cl.isEnough}
               />
             </div>
           </div>
