@@ -46,7 +46,7 @@ class TeaStore {
     if (this.mainSupplementsBasket.length < 6 && supplementOfMainBasket) {
       if (supplementForMainBasket) {
         this.mainSupplementsBasket.push(supplementForMainBasket);
-        supplementForMainBasket.isAdd = true;
+        // supplementForMainBasket.isAdd = true;
       }
     }
   };
