@@ -1,18 +1,21 @@
 import { FC } from "react";
 import classes from "./Header.module.css";
 import { Link } from "react-router-dom";
+import Button from "../Button";
 
 const Header: FC = () => {
   return (
     <div className={classes.header}>
       <Link to="/login">
-        <button>Login</button>
+        <Button type={"primary"} shape={"round"} size={"large "}>
+          <img src="./../../../public/button_login.png" />
+        </Button>
       </Link>
       <Link to="/about">
-        <button>About us</button>
+        <Button type={"text"} shape={"square"} size={"large "}>
+          About us
+        </Button>
       </Link>
-   
-
     </div>
   );
 };

@@ -1,11 +1,13 @@
-.indigenous_card{
-display: flex;
-flex-direction: row;
-justify-content: space-between;
+.indigenous_card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
 .indigenous_card:default {
     opacity: 10%;
 }
+
 .isEnough {
     opacity: 10%;
 }
@@ -14,14 +16,16 @@ justify-content: space-between;
     box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.91);
 }
 
-.icon{
+.icon {
     padding: 25px;
 }
-.title{
-    text-align: center; 
-    
+
+.title {
+    text-align: center;
+
 }
-img {  
+
+img {
     width: 80px;
     border-radius: 50%;
 }

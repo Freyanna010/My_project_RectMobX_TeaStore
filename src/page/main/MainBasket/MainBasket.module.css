@@ -41,7 +41,8 @@
     top: 24px;
     right: -5px;
     background: #f55123;
-    padding: 2px 3px 1px;  
+    padding: 2px 3px 1px;
+    border-radius: 50%;
 }
 
 .basketButton_title {
@@ -50,7 +51,6 @@
 
 .basketButton_title:hover {
     color: #79BFAA
-
 }
 
 .title {
@@ -74,4 +74,8 @@
 .addBasket>img {
     height: 24px;
     width: 24px;
+}
+
+.buttons {
+    margin-top: 15px;
 }
