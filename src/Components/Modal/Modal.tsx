@@ -1,5 +1,6 @@
 import { FC } from "react";
 import classes from "./Modal.module.css";
+import Button from "../Button";
 
 type Props = {
   active: boolean;
@@ -20,17 +21,21 @@ const Modal: FC<Props> = (props) => {
         onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
           e.stopPropagation()
         }
-      >        
-          <div className={classes.button_close} onClick={onCloseHandler}>
+      >
+        <div className={classes.button_close} onClick={onCloseHandler}>
+          <Button type={"primary"} shape={"round"} size={"large "}>
             <img src="./../../../public/close_button .png" />
-          </div>     
-             <div className={classes.text}> {props.text} </div>
-           <div className={classes.button_more}>
-       <a href="#"> {`learn more >>`} </a>
-          </div>
+          </Button>
+        </div>
+        <div className={classes.text}> {props.text} </div>
+        <div className={classes.button_more}>
+          <Button type={"text"} shape={"square"} size={"large "}>
+            {`learn more >>`}
+          </Button>
+        </div>
       </div>
     </div>
-  ); 
+  );
 };
 
 export default Modal;

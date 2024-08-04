@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import Modal from "../../../Components/Modal";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
-import ButtonAddRemove from "../../../Components/ButtonAddRemove";
+import Button from "../../../Components/Button";
 
 const MainTea: FC = () => {
   const [modalActive, setModalActive] = useState<boolean>(false);
@@ -12,33 +12,44 @@ const MainTea: FC = () => {
     <div>
       {
         <ul className={classes.tea_card}>
-          {teaStore.tea.map((t) => {
+          {teaStore.tea.map((tea) => {
             const onAddHandler = () => {
-              teaStore.addTeaMainBasket(t.id);
-              teaStore.changeIsEnoughTea()              
+              teaStore.addTeaMainBasket(tea.id);
+              teaStore.changeIsEnoughTea();
             };
             const onDescriptionHandler = () => {
               setModalActive(true);
-              setDescription(t.description);
+              setDescription(tea.description);
             };
 
             return (
               <li
-                key={t.id}
-                className={t.isEnough ? classes.tea_cardEnough : ""}
+                key={tea.id}
+                className={tea.isEnough ? classes.tea_cardEnough : ""}
               >
                 <div className={classes.icon}>
-                  <img src={t.img} alt={t.name} />
+                  <img src={tea.img} alt={tea.name} />
                 </div>
                 <div className={classes.title}>
-                  <h3>{t.name}</h3>               
-                  <ButtonAddRemove
+                  <h3>{tea.name}</h3>
+                  <Button
                     onClick={onAddHandler}
-                    content={"./../../../../public/add_button.png"}
-                  />
+                    type={"primary"}
+                    shape={"round"}
+                    size={"large "}
+                  >
+                    <img src="./../../../../public/add_button.png" />
+                  </Button>
                 </div>
                 <div className={classes.button}>
-                  <button onClick={onDescriptionHandler}>description</button>
+                  <Button
+                    onClick={onDescriptionHandler}
+                    type={"primary"}
+                    shape={"square"}
+                    size={"large "}
+                  >
+                    description
+                  </Button>
                 </div>
               </li>
             );
