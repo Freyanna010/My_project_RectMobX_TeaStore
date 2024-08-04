@@ -21,6 +21,11 @@ class TeaStore {
       mainTeaBasket: observable,
       mainSupplementsBasket: observable,
       addTeaMainBasket: action,
+      addSupplementMainBasket: action,
+      removeTeaMainBasket: action,
+      removeSupplementMainBasket: action,
+      changeIsEnoughTea: action,
+      changeIsEnoughSupplements: action,
     });
   }
 
@@ -28,25 +33,45 @@ class TeaStore {
     const teaForMainBasket = this.tea.find((t) => t.id === id);
     if (this.mainTeaBasket.length < 1) {
       if (teaForMainBasket) this.mainTeaBasket.push(teaForMainBasket);
+    } else {
+      if (teaForMainBasket) this.mainTeaBasket[0] = teaForMainBasket;
     }
   };
   addSupplementMainBasket = (id: string, collectionId: string) => {
     const arrSupplements = this.supplements[collectionId];
-    const supplementForMainBasket = arrSupplements.find((i) => i.id === id);
+    const supplementForMainBasket = arrSupplements.find((s) => s.id === id);
     const supplementOfMainBasket = this.mainSupplementsBasket.every(
       (i) => i.id !== id
     );
-    if (this.mainSupplementsBasket.length < 7 && supplementOfMainBasket) {
-      if (supplementForMainBasket)
+    if (this.mainSupplementsBasket.length < 6 && supplementOfMainBasket) {
+      if (supplementForMainBasket) {
         this.mainSupplementsBasket.push(supplementForMainBasket);
-    } else {
-      // TODO:remake opacity effect
-      this.collectionSupplements.forEach((i) => {
-        i.isEnough = true;
-      });
+        // supplementForMainBasket.isAdd = true;
+      }
     }
   };
- 
+  removeTeaMainBasket = () => {
+    this.mainTeaBasket.pop();
+    this.tea.forEach(t => t.isEnough = false)
+  };
+  removeSupplementMainBasket = (id: string) => {    
+    this.mainSupplementsBasket = this.mainSupplementsBasket.filter(
+      (s) => s.id !== id
+    );  
+  };  
+  changeIsEnoughTea = () => {
+    this.tea.forEach((t) => {
+      t.id === this.mainTeaBasket[0].id
+        ? (t.isEnough = true)
+        : (t.isEnough = false);
+    });
+  };
+  changeIsEnoughSupplements = () => {
+    this.collectionSupplements.forEach((i) => {
+    this.mainSupplementsBasket.length >= 6
+      ? (i.isEnough = true)
+      : (i.isEnough = false);
+    });
+  };
 }
-
 export default new TeaStore();
