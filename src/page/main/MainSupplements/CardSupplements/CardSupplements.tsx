@@ -2,8 +2,7 @@ import classes from "./CardSupplements.module.css";
 import teaStore from "../../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
 import { Supplement } from "../../../../models";
-import { FC} from "react";
-import ButtonAddRemove from "../../../../Components/Button";
+import { FC } from "react";
 import Button from "../../../../Components/Button";
 
 
