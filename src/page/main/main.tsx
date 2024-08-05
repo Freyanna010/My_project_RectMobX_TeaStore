@@ -8,6 +8,7 @@ import { FC } from "react";
 
 const Main: FC = () => {
   return (
+    <Wraper/>
     <div className={classes.man}>
       <div className={classes.man_tea}>
         <MainTea />

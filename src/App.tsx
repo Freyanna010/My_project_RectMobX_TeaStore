@@ -12,7 +12,7 @@ const App: FC =  () => {
     <div className="app">
       <Header />
       <div className="container-page">
-               
+
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/basket" element={<UserBasket />} />
