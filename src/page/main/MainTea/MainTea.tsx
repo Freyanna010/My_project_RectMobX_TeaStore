@@ -16,6 +16,7 @@ const MainTea: FC = () => {
             const onAddHandler = () => {
               teaStore.addTeaMainBasket(tea.id);
               teaStore.changeIsEnoughTea();
+              teaStore.getTeaPrice()
             };
             const onDescriptionHandler = () => {
               setModalActive(true);
@@ -32,6 +33,7 @@ const MainTea: FC = () => {
                 </div>
                 <div className={classes.title}>
                   <h3>{tea.name}</h3>
+                  <p>{tea.price} €</p>
                   <Button
                     onClick={onAddHandler}
                     type={"primary"}

@@ -14,19 +14,6 @@ const Main: FC = () => {
       <MainSupplements />
       <MainBasket />
     </Wrapper>
-    // {/* <div className={classes.man}>
-    //   <div className={classes.man_tea}>
-    //     <MainTea />
-    //   </div>
-
-    //   <div className={classes.man_indigenous}>
-    //     <MainSupplements />
-    //   </div>
-
-    //   <div className={classes.man_basket}>
-    //     <MainBasket />
-    //   </div>
-    // </div> */}
   );
 };
 export default observer(Main);

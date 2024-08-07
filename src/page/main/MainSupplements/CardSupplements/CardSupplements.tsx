@@ -20,6 +20,7 @@ const CardSupplements: FC<Props> = (props) => {
             const onAddHandler = () => {
               teaStore.addSupplementMainBasket(supplement.id, props.id);
               teaStore.changeIsEnoughSupplements();
+              teaStore.getSupplementPrice()
             };
             return (
               <li key={supplement.id}>
@@ -34,6 +35,7 @@ const CardSupplements: FC<Props> = (props) => {
                   <div className={classes.title}>
                     <h3>
                       {supplement.name}
+                      <p>{supplement.price} €</p>
                       <Button
                         onClick={onAddHandler}
                         type={"primary"}

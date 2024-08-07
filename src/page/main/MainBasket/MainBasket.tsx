@@ -1,18 +1,31 @@
 import classes from "./MainBasket.module.css";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../../Components/Button";
+import userBasketStore from "../../../stores/userBasketStore";
 
 const MainBasket: FC = () => {
   // TODO:divide into components?
+  const onHandlerAddToCard = () => {
+    userBasketStore.addTeaToUserBasket(teaStore.mainTeaBasket);
+    userBasketStore.addSupplementsToBasket(teaStore.mainSupplementsBasket);
+    //  TODO:🤷🏻‍♀️
+    // userBasketStore.createArray();
+    teaStore.deleteTeaMainBasket();
+    teaStore.deleteSupplementsMainBasket();
+    userBasketStore.getPrice()
+    setCount(++count )
+  };
+
+let [count, setCount] = useState(0)
+
   return (
     <div className={classes.man_basket}>
-
       <Link to="/basket" className={classes.basketButton}>
         <div className={classes.basketButton_icon}>
-          <span className={classes.basketButton_counter}>0</span>
+          <span className={classes.basketButton_counter}>{count}</span>
         </div>
         <div className={classes.basketButton_title}> basket</div>
       </Link>
@@ -73,17 +86,26 @@ const MainBasket: FC = () => {
                   </h3>
                 </div>
                 <div className={classes.icon}>
-                  <img src={supplement.img} alt={supplement.name} onClick={onRemoveHandler} />
+                  <img
+                    src={supplement.img}
+                    alt={supplement.name}
+                    onClick={onRemoveHandler}
+                  />
                 </div>
               </li>
             );
           })}
         </ul>
       </div>
-      <div className={classes.buttons}>
 
+      <div className={classes.buttons}>
         {/* TODO:при добавлении */}
-        <Button type={"primary"} shape={"square"} size={"large "}>
+        <Button
+          type={"primary"}
+          shape={"square"}
+          size={"large "}
+          onClick={onHandlerAddToCard}
+        >
           add to card
         </Button>
         {/* TODO:поменять на primary при добавюв корзину */}
@@ -92,6 +114,7 @@ const MainBasket: FC = () => {
             open basket
           </Button>
         </Link>
+       Price: {teaStore.price}
       </div>
     </div>
   );
