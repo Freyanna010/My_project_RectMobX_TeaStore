@@ -45,6 +45,7 @@ class UserBasketStore {
     if (this.userBasket)
       this.userBasket = [...this.userBasket, ...mainSupplementsBasket];
   };
+  //TODO:переименовать
   createArray = () =>
   {
   // debugger

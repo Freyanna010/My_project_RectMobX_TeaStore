@@ -66,7 +66,7 @@ class TeaStore {
     }
   };
   removeTeaMainBasket = () => {
-    this.mainTeaBasket.pop();
+    this.mainTeaBasket = []
     this.tea.forEach((tea) => (tea.isEnough = false));
   };
   removeSupplementMainBasket = (id: string) => {
@@ -91,11 +91,12 @@ class TeaStore {
   deleteTeaMainBasket = () => {
     this.mainTeaBasket = [];
   };
+  // TODO:как лучше? ⬆⬇
   deleteSupplementsMainBasket = () => {
-    this.mainSupplementsBasket = [];
+    this.mainSupplementsBasket.splice(0, this.mainSupplementsBasket.length);
   };
   getTeaPrice = () => {
-    this.teaPrice = this.mainTeaBasket.map((tea) => tea.price)[0]; //TODO:так можно(в массиве всегда)?🤗
+    this.teaPrice = this.mainTeaBasket.map((tea) => tea.price)[0]; //TODO:так можно(в массиве всегда 1 объект)?🤗   
     this.price = this.teaPrice + this.supplementPrice;
   };
   getSupplementPrice = () => {
