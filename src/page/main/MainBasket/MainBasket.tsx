@@ -6,20 +6,22 @@ import { Link } from "react-router-dom";
 import Button from "../../../Components/Button";
 import userBasketStore from "../../../stores/userBasketStore";
 
+// TODO:divide into components?
 const MainBasket: FC = () => {
-  // TODO:divide into components?
+  let [count, setCount] = useState(0);
+
+
   const onHandlerAddToCard = () => {
     userBasketStore.addTeaToUserBasket(teaStore.mainTeaBasket);
     userBasketStore.addSupplementsToBasket(teaStore.mainSupplementsBasket);
     //  TODO:🤷🏻‍♀️
-    // userBasketStore.createArray();
+    userBasketStore.createArray();
     teaStore.deleteTeaMainBasket();
     teaStore.deleteSupplementsMainBasket();
-    userBasketStore.getPrice()
-    setCount(++count )
+    // userBasketStore.getPrice()
+    setCount(++count);
+  
   };
-
-let [count, setCount] = useState(0)
 
   return (
     <div className={classes.man_basket}>
@@ -97,25 +99,29 @@ let [count, setCount] = useState(0)
           })}
         </ul>
       </div>
-
-      <div className={classes.buttons}>
-        {/* TODO:при добавлении */}
-        <Button
-          type={"primary"}
-          shape={"square"}
-          size={"large "}
-          onClick={onHandlerAddToCard}
-        >
-          add to card
-        </Button>
-        {/* TODO:поменять на primary при добавюв корзину */}
-        <Link to="/basket">
-          <Button type={"default"} shape={"square"} size={"large "}>
-            open basket
+      {teaStore.mainTeaBasket.length > 0 && (
+        <div className={classes.buttons}>
+          <Button
+            type={"primary"}
+            shape={"square"}
+            size={"large "}
+            onClick={onHandlerAddToCard}
+          >
+            add to card
           </Button>
-        </Link>
-       Price: {teaStore.price}
-      </div>
+        
+          <Link to="/basket">
+            <Button
+              type={"default"}
+              shape={"square"}
+              size={"large "}
+            >
+              open basket
+            </Button>
+          </Link>
+          Price: {teaStore.price}
+        </div>
+      )}
     </div>
   );
 };

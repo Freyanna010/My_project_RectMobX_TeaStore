@@ -1,6 +1,5 @@
-.userBasket_card {
 
-    /* TODO: сделать компонетом? */
+.cards {
     display: grid;
     justify-items: center;
     margin: 30px 10px;

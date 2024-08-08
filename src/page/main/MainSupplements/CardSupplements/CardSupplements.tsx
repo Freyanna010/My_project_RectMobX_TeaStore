@@ -9,18 +9,20 @@ import Button from "../../../../Components/Button";
 type Props = {
   supplementsForCard: Supplement[];
   id: string;
-  isEnough: boolean
+  isEnough: boolean;
+  name: string;
 };
 const CardSupplements: FC<Props> = (props) => {
   return (
     <div>
       <div>
+        <h3>Choose a {props.name}</h3>
         <ul className={classes.indigenous_card}>
           {props.supplementsForCard.map((supplement) => {
             const onAddHandler = () => {
               teaStore.addSupplementMainBasket(supplement.id, props.id);
               teaStore.changeIsEnoughSupplements();
-              teaStore.getSupplementPrice()
+              teaStore.getSupplementPrice();
             };
             return (
               <li key={supplement.id}>

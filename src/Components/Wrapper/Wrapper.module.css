@@ -3,18 +3,19 @@
     grid-template-areas:
         "a a a "
         "b b c";
-    grid-template-rows: 2fr 8fr;
+    grid-template-rows: 1fr 6fr;
     grid-template-columns: 6fr 1.5fr;
+    align-items: stretch
 
 }
 
 .wrapper_0 {
     grid-area: a;
+    height: fit-content;
 }
 
 .wrapper_1 {
     grid-area: b;
-
 }
 
 .wrapper_2 {
@@ -24,7 +25,6 @@
     height: 1050px;
     margin: 30px 10px;
     border-radius: 15px;
-
 }
 
 .wrapper_2:hover {

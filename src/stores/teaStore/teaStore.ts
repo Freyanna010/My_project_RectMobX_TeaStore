@@ -1,4 +1,4 @@
-import { Tea } from './../../models/models';
+import { Tea } from "./../../models/models";
 import { makeObservable, observable, action } from "mobx";
 import { CollectionSupplements, Supplement, Tea } from "../../models";
 import {
@@ -26,7 +26,7 @@ class TeaStore {
       mainSupplementsBasket: observable,
       price: observable,
       teaPrice: observable,
-      supplementPrice:observable,
+      supplementPrice: observable,
       addTeaMainBasket: action,
       addSupplementMainBasket: action,
       removeTeaMainBasket: action,
@@ -35,12 +35,10 @@ class TeaStore {
       changeIsEnoughSupplements: action,
       deleteTeaMainBasket: action,
       deleteSupplementsMainBasket: action,
-      getSupplementPrice:action,
-      getTeaPrice:action,       
+      getSupplementPrice: action,
+      getTeaPrice: action,
     });
-
   }
-
 
   addTeaMainBasket = (id: string) => {
     const teaForMainBasket = this.tea.find((tea) => tea.id === id);
@@ -97,15 +95,15 @@ class TeaStore {
     this.mainSupplementsBasket = [];
   };
   getTeaPrice = () => {
-    this.teaPrice = this.mainTeaBasket.map((tea) => tea.price)[0]; //TODO:так можно?🤗
-    console.log(this.teaPrice);
+    this.teaPrice = this.mainTeaBasket.map((tea) => tea.price)[0]; //TODO:так можно(в массиве всегда)?🤗
     this.price = this.teaPrice + this.supplementPrice;
   };
   getSupplementPrice = () => {
     this.supplementPrice = this.mainSupplementsBasket
       .map((supplement) => supplement.price)
       .reduce((acc, item) => acc + item);
-       this.price = this.teaPrice + this.supplementPrice;
-  }; 
+
+    this.price = this.teaPrice + this.supplementPrice;
+  };
 }
 export default new TeaStore();

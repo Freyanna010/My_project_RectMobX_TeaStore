@@ -3,6 +3,7 @@ import CardSupplements from "./CardSupplements/CardSupplements";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
 import { FC } from "react";
+import Cards from "../../../Components/Cards";
 
 const MainSupplements: FC = () => {
   return (
@@ -10,17 +11,19 @@ const MainSupplements: FC = () => {
       {teaStore.collectionSupplements.map((collection) => {
         const supplementsForCard = teaStore.supplements[collection.id];
         return (
-          <div className={classes.indigenous_card} key={collection.id}>
-            <div className={classes.tittle}>
-              <h3>Choose a {collection.name}</h3>
+          <div key={collection.id}>
+            <div className={classes.tittle}>           
             </div>
             {collection.isEnough && <div>IS ENOUGH!</div>}
             <div className={collection.isEnough ? classes.isEnough : ""}>
-              <CardSupplements
-                supplementsForCard={supplementsForCard}
-                id={collection.id}
-                isEnough={collection.isEnough}
-              />
+              <Cards>
+                <CardSupplements
+                  supplementsForCard={supplementsForCard}
+                  id={collection.id}
+                  isEnough={collection.isEnough}
+                  name =  {collection.name}
+                />
+              </Cards>
             </div>
           </div>
         );

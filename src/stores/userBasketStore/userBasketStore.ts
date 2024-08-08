@@ -13,8 +13,8 @@ class UserBasketStore {
       array: observable,
       addTeaToUserBasket: action,
       addSupplementsToBasket: action,
-      // createArray: action
-      getPrice: action,
+      createArray: action
+      // getPrice: action,
     });
   }
   addTeaToUserBasket = (mainTeaBasket: ProductForUserBasket[]) => {
@@ -46,14 +46,16 @@ class UserBasketStore {
       this.userBasket = [...this.userBasket, ...mainSupplementsBasket];
   };
   //  TODO:🤷🏻‍♀️
-  // createArray = () =>
-  // {
-  // // debugger
-  // this.array.push(this.userBasket)
-  // }
-  getPrice = () => {
-  this.price = this.userBasket.map(basket => basket.price).reduce((acc,item) => (acc+item))
+  createArray = () =>
+  {
+  // debugger
+  this.array.push(this.userBasket)
   }
+
+//TODO:пока не нужно
+  // getPrice = () => {
+  // this.price = this.userBasket.map(basket => basket.price).reduce((acc,item) => (acc+item))
+  // }
 }
 
 
