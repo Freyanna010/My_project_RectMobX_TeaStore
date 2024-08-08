@@ -45,13 +45,11 @@ class UserBasketStore {
     if (this.userBasket)
       this.userBasket = [...this.userBasket, ...mainSupplementsBasket];
   };
-  //  TODO:🤷🏻‍♀️
   createArray = () =>
   {
   // debugger
   this.array.push(this.userBasket)
   }
-
 //TODO:пока не нужно
   // getPrice = () => {
   // this.price = this.userBasket.map(basket => basket.price).reduce((acc,item) => (acc+item))

@@ -10,17 +10,14 @@ import userBasketStore from "../../../stores/userBasketStore";
 const MainBasket: FC = () => {
   let [count, setCount] = useState(0);
 
-
   const onHandlerAddToCard = () => {
     userBasketStore.addTeaToUserBasket(teaStore.mainTeaBasket);
     userBasketStore.addSupplementsToBasket(teaStore.mainSupplementsBasket);
-    //  TODO:🤷🏻‍♀️
     userBasketStore.createArray();
     teaStore.deleteTeaMainBasket();
     teaStore.deleteSupplementsMainBasket();
     // userBasketStore.getPrice()
     setCount(++count);
-  
   };
 
   return (
@@ -109,13 +106,8 @@ const MainBasket: FC = () => {
           >
             add to card
           </Button>
-        
           <Link to="/basket">
-            <Button
-              type={"default"}
-              shape={"square"}
-              size={"large "}
-            >
+            <Button type={"default"} shape={"square"} size={"large "}>
               open basket
             </Button>
           </Link>
