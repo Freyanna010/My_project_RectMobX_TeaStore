@@ -36,6 +36,8 @@ class TeaStore {
       deleteSupplementsMainBasket: action,
       getSupplementPrice: action,
       getTeaPrice: action,
+      sortByIncrement: action,
+      sortByDecrement: action,
     });
   }
 
@@ -65,7 +67,7 @@ class TeaStore {
     }
   };
   removeTeaMainBasket = () => {
-    this.mainTeaBasket = []
+    this.mainTeaBasket = [];
     this.tea.forEach((tea) => (tea.isEnough = false));
   };
   removeSupplementMainBasket = (id: string) => {
@@ -95,7 +97,7 @@ class TeaStore {
     this.mainSupplementsBasket.splice(0, this.mainSupplementsBasket.length);
   };
   getTeaPrice = () => {
-    this.teaPrice = this.mainTeaBasket.map((tea) => tea.price)[0]; //TODO:так можно(в массиве всегда 1 объект)?🤗   
+    this.teaPrice = this.mainTeaBasket.map((tea) => tea.price)[0]; //TODO:так можно(в массиве всегда 1 объект)?🤗
     this.price = this.teaPrice + this.supplementPrice;
   };
   getSupplementPrice = () => {
@@ -104,6 +106,14 @@ class TeaStore {
       .reduce((acc, item) => acc + item);
 
     this.price = this.teaPrice + this.supplementPrice;
+  };
+  sortByIncrement = (collectionId: string) => {
+    const arrSupplementsForSort = this.supplements[collectionId];
+    arrSupplementsForSort.sort((a, b) => a.price - b.price);
+  };
+  sortByDecrement = (collectionId: string) => {
+    const arrSupplementsForSort = this.supplements[collectionId];
+    arrSupplementsForSort.sort((a, b) => b.price - a.price);
   };
 }
 export default new TeaStore();

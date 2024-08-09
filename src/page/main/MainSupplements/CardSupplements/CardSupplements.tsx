@@ -5,6 +5,7 @@ import { Supplement } from "../../../../models";
 import { FC } from "react";
 import Button from "../../../../Components/Button";
 
+// sortByIncrement;
 
 type Props = {
   supplementsForCard: Supplement[];
@@ -13,10 +14,23 @@ type Props = {
   name: string;
 };
 const CardSupplements: FC<Props> = (props) => {
+  const onUpHandler = () => {
+ teaStore.sortByIncrement(props.id)
+  };
+  const onDownHandler = () => {
+teaStore.sortByDecrement(props.id)
+  };
   return (
     <div>
       <div>
-        <h3>Choose a {props.name}</h3>
+        <div>
+          <h3>Choose a {props.name}</h3>
+          {/* TODO:доделать кнопки */}
+          Sort by price
+          <button onClick={onUpHandler}> ⬆ </button>
+          <button onClick={onDownHandler}> ⬇ </button>
+        </div>
+
         <ul className={classes.indigenous_card}>
           {props.supplementsForCard.map((supplement) => {
             const onAddHandler = () => {
@@ -25,7 +39,7 @@ const CardSupplements: FC<Props> = (props) => {
               teaStore.getSupplementPrice();
             };
             return (
-              <li key={supplement.id} >
+              <li key={supplement.id}>
                 <div>
                   <div className={classes.icon}>
                     <img
