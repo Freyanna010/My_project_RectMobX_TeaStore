@@ -11,6 +11,7 @@ export type CollectionSupplements = {
   id: string;
   name: string;
   isEnough: boolean;
+  idScroll: string;
 };
 
 export type Tea = {

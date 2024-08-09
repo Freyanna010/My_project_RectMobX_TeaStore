@@ -11,9 +11,8 @@ const MainSupplements: FC = () => {
       {teaStore.collectionSupplements.map((collection) => {
         const supplementsForCard = teaStore.supplements[collection.id];
         return (
-          <div key={collection.id}>
-            <div className={classes.tittle}>           
-            </div>
+          <div key={collection.id} id={collection.idScroll}>
+        
             {collection.isEnough && <div>IS ENOUGH!</div>}
             <div className={collection.isEnough ? classes.isEnough : ""}>
               <Cards>

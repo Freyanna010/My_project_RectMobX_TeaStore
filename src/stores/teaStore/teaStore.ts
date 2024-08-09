@@ -1,4 +1,3 @@
-import { Tea } from "./../../models/models";
 import { makeObservable, observable, action } from "mobx";
 import { CollectionSupplements, Supplement, Tea } from "../../models";
 import {
@@ -43,7 +42,7 @@ class TeaStore {
   addTeaMainBasket = (id: string) => {
     const teaForMainBasket = this.tea.find((tea) => tea.id === id);
     if (this.mainTeaBasket.length < 1) {
-      //TODO: или через спред менять массив???
+      //TODO: или через спред менять массив и возвращать его копию??? можно мутировать массив здесь???
       if (teaForMainBasket) this.mainTeaBasket.push(teaForMainBasket);
     } else {
       if (teaForMainBasket) this.mainTeaBasket[0] = teaForMainBasket;

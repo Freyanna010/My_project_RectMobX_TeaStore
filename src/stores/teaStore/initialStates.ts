@@ -33,9 +33,25 @@ const collectionId2 = v1();
 const collectionId3 = v1();
 
 export const initialCollectionSupplementsState: CollectionSupplements[] = [
-  { id: collectionId1, name: "fruit supplements", isEnough: false },
-  { id: collectionId2, name: "herbal supplements", isEnough: false },
-  { id: collectionId3, name: "spice supplements", isEnough: false },
+  {
+    id: collectionId1,
+    name: "fruit supplements",
+    isEnough: false,
+    idScroll: "fruit",
+  },
+  {
+    id: collectionId2,
+    name: "herbal supplements",
+    isEnough: false,
+    idScroll: "herbal",
+  },
+  {
+    id: collectionId3,
+    name: "spice supplements",
+    isEnough: false,
+    idScroll: "spice",
+    
+  },
 ];
 
 export const initialSupplementsState: Record<string, Supplement[]> = {

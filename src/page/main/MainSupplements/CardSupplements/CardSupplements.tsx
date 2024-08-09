@@ -25,7 +25,7 @@ const CardSupplements: FC<Props> = (props) => {
               teaStore.getSupplementPrice();
             };
             return (
-              <li key={supplement.id}>
+              <li key={supplement.id} >
                 <div>
                   <div className={classes.icon}>
                     <img
