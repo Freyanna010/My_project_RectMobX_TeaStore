@@ -9,11 +9,11 @@ import Cards from "../../../Components/Cards";
 const PriceUserBasket: FC = () => {
   return (
     <div>
-      {userBasketStore.userBasket.length > 0 ? (
+      {userBasketStore.array.length > 0 ? (
         <ul>
           {userBasketStore.array.map((arr) => {
             return (
-              <li>
+              <li key={arr.id}>
                 <Cards>
                   <CardPriceUserBasket userBasket={arr} />
                 </Cards>

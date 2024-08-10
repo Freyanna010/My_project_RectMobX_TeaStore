@@ -22,7 +22,4 @@ export type Tea = {
   description: string;
   price: number;
 };
-
-// export type UserBasket = Tea [] |
-// Supplement[];
 export type ProductForUserBasket = Pick<Supplement, "id" | "name" | "price">

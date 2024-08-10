@@ -13,8 +13,10 @@ class TeaStore {
   mainTeaBasket: Tea[] = [];
   mainSupplementsBasket: Supplement[] = [];
   teaPrice: number = 0;
-  price: number = 0;
   supplementPrice: number = 0;
+  price: number = 0;
+  totalProduct: number = 0;
+  totalAll: number = 0;
 
   constructor() {
     makeObservable(this, {
@@ -26,6 +28,8 @@ class TeaStore {
       price: observable,
       teaPrice: observable,
       supplementPrice: observable,
+      totalProduct: observable,
+      totalAll: observable,
       addTeaMainBasket: action,
       addSupplementMainBasket: action,
       removeTeaMainBasket: action,
@@ -36,8 +40,11 @@ class TeaStore {
       deleteSupplementsMainBasket: action,
       getSupplementPrice: action,
       getTeaPrice: action,
+     getPriceForMainBasket: action,
       sortByIncrement: action,
       sortByDecrement: action,
+      increaseTotalProduct: action,
+      decreaseTotalProduct: action
     });
   }
 
@@ -98,15 +105,19 @@ class TeaStore {
   };
   getTeaPrice = () => {
     this.teaPrice = this.mainTeaBasket.map((tea) => tea.price)[0]; //TODO:так можно(в массиве всегда 1 объект)?🤗
-    this.price = this.teaPrice + this.supplementPrice;
+    this.getPriceForMainBasket();
   };
   getSupplementPrice = () => {
     this.supplementPrice = this.mainSupplementsBasket
       .map((supplement) => supplement.price)
       .reduce((acc, item) => acc + item);
-
-    this.price = this.teaPrice + this.supplementPrice;
+    this.getPriceForMainBasket();
   };
+  getPriceForMainBasket = () => {
+    this.price = this.teaPrice + this.supplementPrice;
+    this.supplementPrice = 0
+  };
+
   sortByIncrement = (collectionId: string) => {
     const arrSupplementsForSort = this.supplements[collectionId];
     arrSupplementsForSort.sort((a, b) => a.price - b.price);
@@ -114,6 +125,13 @@ class TeaStore {
   sortByDecrement = (collectionId: string) => {
     const arrSupplementsForSort = this.supplements[collectionId];
     arrSupplementsForSort.sort((a, b) => b.price - a.price);
+  };
+  //TODO: перенести
+  increaseTotalProduct = () => {
+    this.totalProduct = this.totalProduct + this.price;
+  };
+  decreaseTotalProduct = () => {
+    this.totalProduct = this.totalProduct - this.price;
   };
 }
 export default new TeaStore();

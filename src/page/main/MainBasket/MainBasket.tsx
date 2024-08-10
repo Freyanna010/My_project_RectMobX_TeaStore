@@ -8,7 +8,7 @@ import CardTeaMainBasket from "./CardTeaMainBasket";
 import CardSupplementMainBasket from "./CardSupplementMainBasket";
 import CartLink from "../../../Components/CartLink";
 
-// TODO:divide into components?
+
 const MainBasket: FC = () => {
   let [count, setCount] = useState<number>(0);
 
@@ -18,7 +18,6 @@ const MainBasket: FC = () => {
     userBasketStore.createArray();
     teaStore.deleteTeaMainBasket();
     teaStore.deleteSupplementsMainBasket();
-    // userBasketStore.getPrice()
     setCount(++count);
   };
 
@@ -27,7 +26,6 @@ const MainBasket: FC = () => {
       <CartLink count={count} />
       <CardTeaMainBasket />
       <CardSupplementMainBasket />
-
       {teaStore.mainTeaBasket.length > 0 && (
         <div className={classes.buttons}>
           <Button

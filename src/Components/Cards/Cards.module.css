@@ -1,8 +1,8 @@
 
 .cards {
     /* TODO: настроить размер, добавить ховер */
-    display: grid;
-    justify-items: center;
+    /* display: grid;
+    justify-items: center; */
     margin: 30px 10px;
     background: url(./../public/bg_tea_div.png);
     height: fit-content;
