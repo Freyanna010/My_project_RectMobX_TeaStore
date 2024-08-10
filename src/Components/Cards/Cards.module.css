@@ -1,6 +1,6 @@
 
 .cards {
-    /* TODO: настроить размер */
+    /* TODO: настроить размер, добавить ховер */
     display: grid;
     justify-items: center;
     margin: 30px 10px;

@@ -1,0 +1,81 @@
+.man_basket {
+    padding: 15px;
+}
+
+.basketButton {
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(255, 255, 255);
+    display: block;
+    cursor: pointer;
+    transition: color 2s ease 0s;
+    text-align: center;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 15px;
+    margin-left: 280px;
+    text-transform: uppercase;
+}
+
+.basketButton_icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 5px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(./../../../../public/button_basket.png);
+}
+
+.basketButton_counter {
+    font-size: 10px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    min-width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 24px;
+    right: -5px;
+    background: #f55123;
+    padding: 2px 3px 1px;
+    border-radius: 50%;
+}
+
+.basketButton_title {
+    transition: color .3s ease 0s;
+}
+
+.basketButton_title:hover {
+    color: #79BFAA
+}
+
+.title {
+    font-size: 26px;
+}
+
+.baskets {
+    background: #ffff;
+    color: black;
+    height: 25px;
+    width: 100px;
+    padding: 5px;
+    display: flex;
+    text-transform: uppercase;
+    border-radius: 5%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center
+}
+
+.addBasket>img {
+    height: 24px;
+    width: 24px;
+}
+
+.buttons {
+    margin-top: 15px;
+}

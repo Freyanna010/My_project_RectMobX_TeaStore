@@ -1,0 +1,75 @@
+.tea_card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 260px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+.tea_cardEnough {
+    opacity: 50%;
+}
+
+.icon {
+    padding: 10px 50px;
+}
+
+.icon>img {
+    width: 200px;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button_add {
+    margin-left: 20px;
+    background: none;
+    width: 30px;
+    height: 30px;
+}
+
+.button_add>img {
+    width: 30px;
+    height: 30px;
+}
+
+.button {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.button>button {
+    width: 140px;
+}
+
+.description_link {
+    color: #7ab6a3;
+    cursor: pointer;
+    font-size: 24px;
+    position: relative;
+    margin-left: 30px;
+    transition: color 0.2s ease-in-out;
+
+}
+
+.description_link:hover {
+    color: #fff;
+}
+
+.description_link::before {
+    content: url(./../../../../public/li_img.png);
+    position: absolute;
+    right: 30px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: content 0.2s ease-in-out;
+}
+
+.description_link:hover::before {
+    content: url(./../../../../public/li_img2.png);
+}
