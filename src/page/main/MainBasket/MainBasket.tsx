@@ -8,22 +8,18 @@ import CardTeaMainBasket from "./CardTeaMainBasket";
 import CardSupplementMainBasket from "./CardSupplementMainBasket";
 import CartLink from "../../../Components/CartLink";
 
-
 const MainBasket: FC = () => {
-  let [count, setCount] = useState<number>(0);
-
   const onHandlerAddToCard = () => {
     userBasketStore.addTeaToUserBasket(teaStore.mainTeaBasket);
     userBasketStore.addSupplementsToBasket(teaStore.mainSupplementsBasket);
     userBasketStore.createUserBasket();
     teaStore.removeTeaOnAddButton();
     teaStore.removeSupplementsOnAddButton();
-    setCount(++count);
   };
 
   return (
     <div className={classes.man_basket}>
-      <CartLink count={count} />
+      <CartLink />
       <CardTeaMainBasket />
       <CardSupplementMainBasket />
       {teaStore.mainTeaBasket.length > 0 && (
