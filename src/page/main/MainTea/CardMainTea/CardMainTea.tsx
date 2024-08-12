@@ -14,7 +14,7 @@ const CardMainTea: FC = () => {
         <ul className={classes.tea_card}>
           {teaStore.tea.map((tea) => {
             const onAddHandler = () => {
-              teaStore.addTeaMainBasket(tea.id);
+              teaStore.addTeaToMainBasket(tea.id);
               teaStore.changeIsEnoughTea();
               teaStore.getTeaPrice();
             };

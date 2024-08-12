@@ -3,7 +3,7 @@ import classes from "./userBasket.module.css";
 import { FC } from "react";
 import Wrapper from "../../Components/Wrapper";
 import HeaderUserBasket from "./HeaderUserBasket";
-import PriceUserBasket from "./PriceUserBasket";
+import PriceUserBasket from "./ProductsUserBasket";
 import TotalUserBasket from "./TotalUserBasket";
 
 

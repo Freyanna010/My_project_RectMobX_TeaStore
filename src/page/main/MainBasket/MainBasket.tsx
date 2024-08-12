@@ -15,9 +15,9 @@ const MainBasket: FC = () => {
   const onHandlerAddToCard = () => {
     userBasketStore.addTeaToUserBasket(teaStore.mainTeaBasket);
     userBasketStore.addSupplementsToBasket(teaStore.mainSupplementsBasket);
-    userBasketStore.createArray();
-    teaStore.deleteTeaMainBasket();
-    teaStore.deleteSupplementsMainBasket();
+    userBasketStore.createUserBasket();
+    teaStore.removeTeaOnAddButton();
+    teaStore.removeSupplementsOnAddButton();
     setCount(++count);
   };
 
@@ -36,7 +36,7 @@ const MainBasket: FC = () => {
           >
             add to card
           </Button>
-          Price: {teaStore.price}
+          Price: {teaStore.priceProductMainBasket}
         </div>
       )}
     </div>

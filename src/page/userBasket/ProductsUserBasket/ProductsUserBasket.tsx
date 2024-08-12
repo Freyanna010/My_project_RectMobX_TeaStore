@@ -1,17 +1,17 @@
 import { observer } from "mobx-react-lite";
-import classes from "./PriceUserBasket.module.css";
+import classes from "./ProductsUserBasket.module.css";
 import { FC } from "react";
 import userBasketStore from "../../../stores/userBasketStore";
 
-import CardPriceUserBasket from "./CardPruceUserBasket/CardPriceUserBasket";
+import CardPriceUserBasket from "./CardProductsUserBasket/CardProductsUserBasket";
 import Cards from "../../../Components/Cards";
 
-const PriceUserBasket: FC = () => {
+const ProductsUserBasket: FC = () => {
   return (
     <div>
-      {userBasketStore.array.length > 0 ? (
+      {userBasketStore.userBasket.length > 0 ? (
         <ul>
-          {userBasketStore.array.map((arr) => {
+          {userBasketStore.userBasket.map((arr) => {
             return (
               <li key={arr.id}>
                 <Cards>
@@ -29,4 +29,4 @@ const PriceUserBasket: FC = () => {
     </div>
   );
 };
-export default observer(PriceUserBasket);
+export default observer(ProductsUserBasket);

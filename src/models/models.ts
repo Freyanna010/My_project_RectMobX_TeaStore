@@ -23,3 +23,4 @@ export type Tea = {
   price: number;
 };
 export type ProductForUserBasket = Pick<Supplement, "id" | "name" | "price">
+export type UserBasket = ProductForUserBasket[];

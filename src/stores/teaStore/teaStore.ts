@@ -14,9 +14,7 @@ class TeaStore {
   mainSupplementsBasket: Supplement[] = [];
   teaPrice: number = 0;
   supplementPrice: number = 0;
-  price: number = 0;
-  totalProduct: number = 0;
-  totalAll: number = 0;
+  priceProductMainBasket: number = 0;
 
   constructor() {
     makeObservable(this, {
@@ -25,30 +23,26 @@ class TeaStore {
       collectionSupplements: observable,
       mainTeaBasket: observable,
       mainSupplementsBasket: observable,
-      price: observable,
+      priceProductMainBasket: observable,
       teaPrice: observable,
       supplementPrice: observable,
-      totalProduct: observable,
-      totalAll: observable,
-      addTeaMainBasket: action,
-      addSupplementMainBasket: action,
-      removeTeaMainBasket: action,
-      removeSupplementMainBasket: action,
+      addTeaToMainBasket: action,
+      addSupplementToMainBasket: action,
+      removeTeaFromMainBasket: action,
+      removeSupplementFromMainBasket: action,
       changeIsEnoughTea: action,
       changeIsEnoughSupplements: action,
-      deleteTeaMainBasket: action,
-      deleteSupplementsMainBasket: action,
+      removeTeaOnAddButton: action,
+      removeSupplementsOnAddButton: action,
       getSupplementPrice: action,
       getTeaPrice: action,
-     getPriceForMainBasket: action,
+      getPriceForMainBasket: action,
       sortByIncrement: action,
       sortByDecrement: action,
-      increaseTotalProduct: action,
-      decreaseTotalProduct: action
     });
   }
 
-  addTeaMainBasket = (id: string) => {
+  addTeaToMainBasket = (id: string) => {
     const teaForMainBasket = this.tea.find((tea) => tea.id === id);
     if (this.mainTeaBasket.length < 1) {
       //TODO: или через спред менять массив и возвращать его копию??? можно мутировать массив здесь???
@@ -57,7 +51,7 @@ class TeaStore {
       if (teaForMainBasket) this.mainTeaBasket[0] = teaForMainBasket;
     }
   };
-  addSupplementMainBasket = (id: string, collectionId: string) => {
+  addSupplementToMainBasket = (id: string, collectionId: string) => {
     const arrSupplements = this.supplements[collectionId];
     const supplementForMainBasket = arrSupplements.find(
       (supplement) => supplement.id === id
@@ -73,11 +67,11 @@ class TeaStore {
       }
     }
   };
-  removeTeaMainBasket = () => {
+  removeTeaFromMainBasket = () => {
     this.mainTeaBasket = [];
     this.tea.forEach((tea) => (tea.isEnough = false));
   };
-  removeSupplementMainBasket = (id: string) => {
+  removeSupplementFromMainBasket = (id: string) => {
     this.mainSupplementsBasket = this.mainSupplementsBasket.filter(
       (supplement) => supplement.id !== id
     );
@@ -96,11 +90,11 @@ class TeaStore {
         : (coll.isEnough = false);
     });
   };
-  deleteTeaMainBasket = () => {
+  removeTeaOnAddButton = () => {
     this.mainTeaBasket = [];
   };
   // TODO:как лучше? ⬆⬇
-  deleteSupplementsMainBasket = () => {
+  removeSupplementsOnAddButton = () => {
     this.mainSupplementsBasket.splice(0, this.mainSupplementsBasket.length);
   };
   getTeaPrice = () => {
@@ -114,10 +108,9 @@ class TeaStore {
     this.getPriceForMainBasket();
   };
   getPriceForMainBasket = () => {
-    this.price = this.teaPrice + this.supplementPrice;
-    this.supplementPrice = 0
+    this.priceProductMainBasket = this.teaPrice + this.supplementPrice;
+    this.supplementPrice = 0;
   };
-
   sortByIncrement = (collectionId: string) => {
     const arrSupplementsForSort = this.supplements[collectionId];
     arrSupplementsForSort.sort((a, b) => a.price - b.price);
@@ -125,13 +118,6 @@ class TeaStore {
   sortByDecrement = (collectionId: string) => {
     const arrSupplementsForSort = this.supplements[collectionId];
     arrSupplementsForSort.sort((a, b) => b.price - a.price);
-  };
-  //TODO: перенести
-  increaseTotalProduct = () => {
-    this.totalProduct = this.totalProduct + this.price;
-  };
-  decreaseTotalProduct = () => {
-    this.totalProduct = this.totalProduct - this.price;
   };
 }
 export default new TeaStore();
