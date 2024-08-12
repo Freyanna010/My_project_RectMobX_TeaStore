@@ -1,4 +1,3 @@
-
 export type Supplement = {
   id: string;
   name: string;
@@ -22,5 +21,10 @@ export type Tea = {
   description: string;
   price: number;
 };
-export type ProductForUserBasket = Pick<Supplement, "id" | "name" | "price">
-export type UserBasket = ProductForUserBasket[];
+// export type ProductForUserBasket = Pick<Supplement, "id" | "name" | "price">
+// export type UserBasket = ProductForUserBasket[];
+export type Product = {
+  id: string;
+  name: string[];
+  price: number;
+};

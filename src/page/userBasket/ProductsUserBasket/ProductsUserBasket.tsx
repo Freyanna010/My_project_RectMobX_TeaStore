@@ -1,21 +1,19 @@
 import { observer } from "mobx-react-lite";
-import classes from "./ProductsUserBasket.module.css";
 import { FC } from "react";
 import userBasketStore from "../../../stores/userBasketStore";
-
-import CardPriceUserBasket from "./CardProductsUserBasket/CardProductsUserBasket";
 import Cards from "../../../Components/Cards";
+import CardProductsUserBasket from "./CardProductsUserBasket/CardProductsUserBasket";
 
 const ProductsUserBasket: FC = () => {
   return (
     <div>
       {userBasketStore.userBasket.length > 0 ? (
         <ul>
-          {userBasketStore.userBasket.map((arr) => {
+          {userBasketStore.userBasket.map((basket) => {
             return (
-              <li key={arr.id}>
+              <li key={basket.id}>
                 <Cards>
-                  <CardPriceUserBasket userBasket={arr} />
+                  <CardProductsUserBasket userBasket={basket} />
                 </Cards>
               </li>
             );

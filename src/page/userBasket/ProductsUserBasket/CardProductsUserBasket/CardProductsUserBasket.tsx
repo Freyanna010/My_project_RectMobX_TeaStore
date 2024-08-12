@@ -3,63 +3,58 @@ import classes from "./CardProductsUserBasket.module.css";
 import { FC, useEffect, useState } from "react";
 import teaStore from "../../../../stores/teaStore";
 import userBasketStore from "../../../../stores/userBasketStore";
+import { Product } from "../../../../models";
+import { v1 } from "uuid";
 
 type Props = {
-  userBasket: any[];
+  userBasket: Product;
 };
 
-const CardPriceUserBasket: FC<Props> = (props) => {
+const CardProductsUserBasket: FC<Props> = ({ userBasket }) => {
   let [qtyValue, setQtyValue] = useState<number>(1);
 
-  // TODO:это может быть тут???(нет🤔)
-  const priceUserBasket = props.userBasket
-    .map((supplement) => supplement.price)
-    .reduce((acc, item) => acc + item);
-  let [total, setTotal] = useState<number>(priceUserBasket);
+  // TODO:это можно считать пока здесь😏? потом, предположительно,  все продукты отправлю 🐱‍🏍в другой стейт(бэк) при нажатии на "buy" и там сложy сумму всех продуктов(это заначениеБ по-идее, нужно только визуально показать пользователю на данном этапе)
+  let [totalProduct, setTotalProduct] = useState<number>(userBasket.price);
 
   const onMinusHandler = () => {
     if (qtyValue > 1) {
       setQtyValue(--qtyValue);
-      setTotal(total - priceUserBasket);
+      setTotalProduct(totalProduct - userBasket.price);
     } else {
       // TODO: удалить карточку с чаем
     }
   };
   const onPlusHandler = () => {
     setQtyValue(++qtyValue);
-    setTotal(total + priceUserBasket);
+    setTotalProduct(totalProduct + userBasket.price);
   };
 
   return (
-    <div className={classes.cardPrice}>
-      <div>
+    <div className={classes.cardProducts}>
+      <div className={classes.cardProducts_icon}>
         <img src="./../../../../public/ea_pack.png" />
       </div>
-      <div>
+      <div className={classes.cardProducts_name}>
         <ul>
-          {props.userBasket.map((basket) => {
-            return (
-              <li key={basket.id}>
-                <div>
-                  <div>{basket.name},</div>
-                </div>
-              </li>
-            );
+          {userBasket.name.map((name) => {
+            //TODO: можно так ключ задать?
+            return <li key={v1()}>{name}</li>;
           })}
         </ul>
       </div>
-
-      <div>price: {priceUserBasket}</div>
+      <div className={classes.cardProducts_price}>
+        price: {userBasket.price}
+      </div>
 
       <div>
-        Qty:
-        <button onClick={onMinusHandler}>➖</button>
+        Qty: <button onClick={onMinusHandler}>➖</button>
         {qtyValue}
         <button onClick={onPlusHandler}>➕</button>
       </div>
 
-      <div>total: {total}</div>
+      <div>total:{totalProduct}</div>
     </div>
   );
 };
-export default observer(CardPriceUserBasket);
+
+export default observer(CardProductsUserBasket);

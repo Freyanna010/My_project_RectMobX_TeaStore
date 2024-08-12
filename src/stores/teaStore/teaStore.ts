@@ -93,7 +93,7 @@ class TeaStore {
   removeTeaOnAddButton = () => {
     this.mainTeaBasket = [];
   };
-  // TODO:как лучше? ⬆⬇
+  // TODO:как лучше массив⬆⬇ ? 🙄
   removeSupplementsOnAddButton = () => {
     this.mainSupplementsBasket.splice(0, this.mainSupplementsBasket.length);
   };

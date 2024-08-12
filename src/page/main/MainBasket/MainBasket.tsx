@@ -10,9 +10,10 @@ import CartLink from "../../../Components/CartLink";
 
 const MainBasket: FC = () => {
   const onHandlerAddToCard = () => {
-    userBasketStore.addTeaToUserBasket(teaStore.mainTeaBasket);
-    userBasketStore.addSupplementsToBasket(teaStore.mainSupplementsBasket);
-    userBasketStore.createUserBasket();
+    userBasketStore.addTeaAndSupplementToUserBasket(
+      teaStore.mainTeaBasket,
+      teaStore.mainSupplementsBasket
+    );
     teaStore.removeTeaOnAddButton();
     teaStore.removeSupplementsOnAddButton();
   };
