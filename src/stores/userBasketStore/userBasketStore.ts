@@ -48,7 +48,7 @@ class UserBasketStore {
   decreaseTotalProduct = (total: number) => {
     this.totalProduct = this.totalProduct - total;
   };
-  //T0DO: мoжет, как- то так  должен выглядеть массив для UserBasket???
+  //TODO: мoжет, как- то так  должен выглядеть массив для UserBasket???
   // UserBasket = [
   //   {
   //     name: ["green tea", "cherry", "mint"],
