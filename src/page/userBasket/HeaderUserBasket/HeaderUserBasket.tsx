@@ -7,7 +7,7 @@ import userBasketStore from "../../../stores/userBasketStore";
 
 const HeaderUserBasket: FC = () => {
 const onRemoveHendler = () => {
-  userBasketStore.removeAllCardProductForUserBasket()
+  userBasketStore.removeAllCardProduct()
 }
 
   return (

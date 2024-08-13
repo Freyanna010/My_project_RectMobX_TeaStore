@@ -8,7 +8,8 @@ import { FC } from "react";
 const TotalUserBasket: FC = () => {
   return (
     <>
-      <h2>total:</h2>
+    {/* TODO: тут общая сумма за все продукты */}
+      <h2>total: </h2>
       <button>buy</button>
     </>
   );

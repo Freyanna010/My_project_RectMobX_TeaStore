@@ -120,7 +120,7 @@ class TeaStore {
     const arrSupplementsForSort = this.supplements[collectionId];
     arrSupplementsForSort.sort((a, b) => b.price - a.price);
   };
-  sortByNames = (collectionId: string) => {
+  sortByNames = (collectionId: string) => { 
     let arrSupplementsForSort = this.supplements[collectionId];
     // TODO: попытка lodash - ругается на  _.🤷🏻‍♀️
     // arrSupplementsForSort = _.sortBy(arrSupplementsForSort, "name")
