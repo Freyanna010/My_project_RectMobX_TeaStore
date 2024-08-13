@@ -3,8 +3,13 @@ import classes from "./HeaderUserBasket.module.css";
 import { FC } from "react";
 import Button from "../../../Components/Button";
 import { Link } from "react-router-dom";
+import userBasketStore from "../../../stores/userBasketStore";
 
 const HeaderUserBasket: FC = () => {
+const onRemoveHendler = () => {
+  userBasketStore.removeAllCardProductForUserBasket()
+}
+
   return (
     <>
       <div className={classes.header}>
@@ -21,7 +26,7 @@ const HeaderUserBasket: FC = () => {
           </Button>
         </Link>
 
-        <Button type={"default"} shape={"square"} size={"large "}>
+        <Button type={"default"} shape={"square"} size={"large "} onClick={onRemoveHendler}>
           <p>
             remove cart
             <img src="./../../../../public/remove_busket_button  .png" alt="" />

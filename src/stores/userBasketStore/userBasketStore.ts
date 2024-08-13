@@ -9,22 +9,33 @@ class UserBasketStore {
       totalProduct: observable,
       userBasket: observable,
       addTeaAndSupplementToUserBasket: action,
+      removeCardProductForUserBasket: action,
+      removeAllCardProduct: action,
     });
   }
-  addTeaAndSupplementToUserBasket = (mainTeaBasket: Tea[], mainSupplementsBasket: Supplement[]) =>{
-    const teaNameForUserBasket = mainTeaBasket.map(tea => tea.name)
-    const supplementsNamesForUserBasket = mainSupplementsBasket.map(supplement => supplement.name)
+  addTeaAndSupplementToUserBasket = (
+    mainTeaBasket: Tea[],
+    mainSupplementsBasket: Supplement[] | []
+  ) => {
+    const teaNameForUserBasket = mainTeaBasket.map((tea) => tea.name);
+    const supplementsNamesForUserBasket = mainSupplementsBasket.map(
+      (supplement) => supplement.name
+    );
     const productForUserBasket = {
       id: v1(),
-       name: [...teaNameForUserBasket, ...supplementsNamesForUserBasket],
+      name: [...teaNameForUserBasket, ...supplementsNamesForUserBasket],
       price:
-        (mainSupplementsBasket
+        mainTeaBasket.map((tea) => tea.price)[0] +
+        mainSupplementsBasket
           .map((supplement) => supplement.price)
-          .reduce((acc, item) => acc + item)) +
-        (mainTeaBasket.map((tea) => tea.price)[0])
-    }
-    this.userBasket.push(productForUserBasket)
-  }
+          .reduce((acc, item) => acc + item),
+    };
+    this.userBasket.push(productForUserBasket);
+  };
+  removeCardProductForUserBasket = (id: string) =>
+    (this.userBasket = this.userBasket.filter((basket) => basket.id !== id));
+  removeAllCardProduct = () =>
+    this.userBasket.splice(0, this.userBasket.length);
 }
 
 export default new UserBasketStore();

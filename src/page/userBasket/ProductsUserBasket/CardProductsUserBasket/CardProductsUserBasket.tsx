@@ -15,13 +15,12 @@ const CardProductsUserBasket: FC<Props> = ({ userBasket }) => {
 
   // TODO:это можно считать пока здесь😏? потом, предположительно,  все продукты отправлю 🐱‍🏍в другой стейт(бэк) при нажатии на "buy" и там сложy сумму всех продуктов(это заначениеБ по-идее, нужно только визуально показать пользователю на данном этапе)
   let [totalProduct, setTotalProduct] = useState<number>(userBasket.price);
-
   const onMinusHandler = () => {
     if (qtyValue > 1) {
       setQtyValue(--qtyValue);
       setTotalProduct(totalProduct - userBasket.price);
     } else {
-      // TODO: удалить карточку с чаем
+      userBasketStore.removeCardProductForUserBasket(userBasket.id);
     }
   };
   const onPlusHandler = () => {

@@ -1,22 +1,29 @@
 .app {
   display: flex;
-  width: 1200px; 
-  height: 100vh; 
-  display: grid;
-  grid-template-rows: 1fr 2fr 10fr;
-  justify-items: center;
-  color: aliceblue; 
+  width: 1200px;
+  height: 100%;
+  /* display: grid;
+  grid-template-rows: 1fr 2fr 10fr; */
 
 }
 
-.container-page{
+.container-page {
   margin-top: 15px;
   background-color: #262f2c;
-  padding: 20px;
-  width: 1160px;
+  padding: 30px 45px;
+  width: 1125px;
   margin-top: 230px;
+
+
 }
 
+.buttonUp {
+  position: fixed;
+  z-index: 1;
+  top: 290px;
+  left: 1250px;
+
+}
 
 
 
@@ -63,11 +70,3 @@ box-shadow: 0px 0px 6px 5px rgba(2, 35, 13, 0.58) inset;
   width: 400px;
   margin: 30px 10px;
 } */
-
-
-
-
-
-
-
-

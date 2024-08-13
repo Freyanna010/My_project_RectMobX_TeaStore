@@ -5,6 +5,7 @@ import Main from "./page/main";
 import {Route, Routes } from "react-router-dom";
 import UserBasket from "./page/userBasket";
 import About from "./page/about";
+import {animateScroll} from "react-scroll"
 
 
 const App: FC =  () => {
@@ -12,6 +13,10 @@ const App: FC =  () => {
     <div className="app">
       <Header />
       <div className="container-page">
+        {/*TODO: в компонент */}
+        <div className="buttonUp">
+          <button onClick={() => animateScroll.scrollToTop()}>⏫</button>
+        </div>
 
         <Routes>
           <Route path="/" element={<Main />} />

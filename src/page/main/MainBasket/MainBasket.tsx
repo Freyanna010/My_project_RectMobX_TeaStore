@@ -23,19 +23,20 @@ const MainBasket: FC = () => {
       <CartLink />
       <CardTeaMainBasket />
       <CardSupplementMainBasket />
-      {teaStore.mainTeaBasket.length > 0 && (
-        <div className={classes.buttons}>
-          <Button
-            type={"primary"}
-            shape={"square"}
-            size={"large "}
-            onClick={onHandlerAddToCard}
-          >
-            add to card
-          </Button>
-          Price: {teaStore.priceProductMainBasket}
-        </div>
-      )}
+      {teaStore.mainTeaBasket.length > 0 &&
+        teaStore.mainSupplementsBasket.length > 0 && (
+          <div className={classes.buttons}>
+            <Button
+              type={"primary"}
+              shape={"square"}
+              size={"large "}
+              onClick={onHandlerAddToCard}
+            >
+              add to card
+            </Button>
+            Price: {teaStore.priceProductMainBasket}
+          </div>
+        )}
     </div>
   );
 };
