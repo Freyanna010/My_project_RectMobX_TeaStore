@@ -5,6 +5,7 @@ import {
   initialSupplementsState,
   initialTeaState,
 } from "./initialStates";
+import { sortBy } from "react-lodash";
 class TeaStore {
   tea: Tea[] = initialTeaState;
   supplements: Record<string, Supplement[]> = initialSupplementsState;
@@ -118,6 +119,20 @@ class TeaStore {
   sortByDecrement = (collectionId: string) => {
     const arrSupplementsForSort = this.supplements[collectionId];
     arrSupplementsForSort.sort((a, b) => b.price - a.price);
+  };
+  sortByNames = (collectionId: string) => {
+    let arrSupplementsForSort = this.supplements[collectionId];
+    // TODO: попытка lodash - ругается на  _.🤷🏻‍♀️
+    // arrSupplementsForSort = _.sortBy(arrSupplementsForSort, "name")
+    arrSupplementsForSort.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    });
   };
 }
 export default new TeaStore();

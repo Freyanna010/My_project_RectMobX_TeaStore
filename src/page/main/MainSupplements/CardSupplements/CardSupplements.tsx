@@ -13,16 +13,16 @@ type Props = {
   name: string;
 };
 const CardSupplements: FC<Props> = (props) => {
-
-
-
-
   const onUpHandler = () => {
     teaStore.sortByIncrement(props.id);
   };
   const onDownHandler = () => {
     teaStore.sortByDecrement(props.id);
   };
+   const onSortByNamesHandler = () => {
+    teaStore.sortByNames(props.id)
+  }
+
   return (
     <div>
       <div>
@@ -32,7 +32,9 @@ const CardSupplements: FC<Props> = (props) => {
           Sort by price
           <button onClick={onUpHandler}> ⬆ </button>
           <button onClick={onDownHandler}> ⬇ </button>
+          <button onClick={onSortByNamesHandler}>sort by names</button>
         </div>
+
 
         <ul className={classes.indigenous_card}>
           {props.supplementsForCard.map((supplement) => {

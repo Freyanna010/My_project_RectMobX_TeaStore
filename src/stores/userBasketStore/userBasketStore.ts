@@ -13,10 +13,10 @@ class UserBasketStore {
   }
   addTeaAndSupplementToUserBasket = (mainTeaBasket: Tea[], mainSupplementsBasket: Supplement[]) =>{
     const teaNameForUserBasket = mainTeaBasket.map(tea => tea.name)
-    const supplementsNameForUserBasket = mainSupplementsBasket.map(supplement => supplement.name)
+    const supplementsNamesForUserBasket = mainSupplementsBasket.map(supplement => supplement.name)
     const productForUserBasket = {
       id: v1(),
-       name: [...teaNameForUserBasket, ...supplementsNameForUserBasket],
+       name: [...teaNameForUserBasket, ...supplementsNamesForUserBasket],
       price:
         (mainSupplementsBasket
           .map((supplement) => supplement.price)

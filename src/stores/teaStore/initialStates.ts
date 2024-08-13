@@ -96,7 +96,7 @@ export const initialSupplementsState: Record<string, Supplement[]> = {
     {
       id: v1(),
       name: "mint",
-      img: "./../public/indig/black_tea.jpg",
+      img: "./../public/мята.jpg",
       isAdd: false,
       price: 4,
     },
