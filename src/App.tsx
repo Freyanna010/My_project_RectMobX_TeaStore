@@ -5,6 +5,8 @@ import Main from "./page/main";
 import {Route, Routes } from "react-router-dom";
 import UserBasket from "./page/userBasket";
 import About from "./page/about";
+import Login from "./page/login";
+
 
 
 const App: FC =  () => {
@@ -18,7 +20,7 @@ const App: FC =  () => {
           <Route path="/basket" element={<UserBasket />} />
           <Route path="/about" element={<About />} />
           //TODO: modal or page
-          {/* <Route path="/basket" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </div>
