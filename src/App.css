@@ -1,12 +1,10 @@
 .app {
   display: flex;
   width: 1200px; 
-  height: 100vh; 
-  display: grid;
-  grid-template-rows: 1fr 2fr 10fr;
+   /* display: grid;
+  grid-template-rows: 1fr 2fr 10fr; */
   justify-items: center;
   color: aliceblue; 
-
 }
 
 .container-page{
@@ -15,7 +13,7 @@
   padding: 20px;
   width: 1160px;
   margin-top: 230px;
-
+  /* height: 100vh; */
 }
 
 
