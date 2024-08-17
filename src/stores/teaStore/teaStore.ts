@@ -5,7 +5,7 @@ import {
   initialSupplementsState,
   initialTeaState,
 } from "./initialStates";
-import { sortBy } from "react-lodash";
+
 class TeaStore {
   tea: Tea[] = initialTeaState;
   supplements: Record<string, Supplement[]> = initialSupplementsState;
@@ -52,7 +52,7 @@ class TeaStore {
       if (teaForMainBasket) this.mainTeaBasket[0] = teaForMainBasket;
     }
   };
-  addSupplementToMainBasket = (id: string, collectionId: string) => {
+  addSupplementToMainBasket = (id: string, collectionId: string) => {    
     const arrSupplements = this.supplements[collectionId];
     const supplementForMainBasket = arrSupplements.find(
       (supplement) => supplement.id === id
@@ -120,7 +120,7 @@ class TeaStore {
     const arrSupplementsForSort = this.supplements[collectionId];
     arrSupplementsForSort.sort((a, b) => b.price - a.price);
   };
-  sortByNames = (collectionId: string) => { 
+  sortByNames = (collectionId: string) => {
     let arrSupplementsForSort = this.supplements[collectionId];
     // TODO: попытка lodash - ругается на  _.🤷🏻‍♀️
     // arrSupplementsForSort = _.sortBy(arrSupplementsForSort, "name")

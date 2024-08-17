@@ -11,21 +11,21 @@ type Props = {
 };
 
 const CardProductsUserBasket: FC<Props> = ({ userBasket }) => {
-  let [qtyValue, setQtyValue] = useState<number>(1);
+  const [qtyValue, setQtyValue] = useState<number>(1);
 
-  // TODO:это можно считать пока здесь😏? потом, предположительно,  все продукты отправлю 🐱‍🏍в другой стейт(бэк) при нажатии на "buy" и там сложy сумму всех продуктов(это заначениеБ по-идее, нужно только визуально показать пользователю на данном этапе)
-  let [totalProduct, setTotalProduct] = useState<number>(userBasket.price);
+  // TODO:перенести в стор
+  let [totalProductPrice, setTotalProductPrice] = useState<number>(userBasket.price);
   const onMinusHandler = () => {
     if (qtyValue > 1) {
-      setQtyValue(--qtyValue);
-      setTotalProduct(totalProduct - userBasket.price);
+      setQtyValue((value) => --value);
+      setTotalProductPrice(totalProductPrice - userBasket.price);
     } else {
       userBasketStore.removeCardProductForUserBasket(userBasket.id);
     }
   };
   const onPlusHandler = () => {
-    setQtyValue(++qtyValue);
-    setTotalProduct(totalProduct + userBasket.price);
+    setQtyValue((value) => ++value);
+    setTotalProductPrice(totalProductPrice + userBasket.price);
   };
 
   return (
@@ -51,7 +51,7 @@ const CardProductsUserBasket: FC<Props> = ({ userBasket }) => {
         <button onClick={onPlusHandler}>➕</button>
       </div>
 
-      <div>total:{totalProduct}</div>
+      <div>total:{totalProductPrice}</div>
     </div>
   );
 };

@@ -13,9 +13,9 @@ const CardSupplementBasket: FC = () => {
           <h2 className={classes.title}> supplements: </h2>
           {teaStore.mainSupplementsBasket.map((supplement) => {
             const onRemoveHandler = () => {
-              // TODO:ругается, но по-другому пока не получилось😪
+              // TODO:ругается(на изменение вне стор), но по-другому пока не получилось😪
               supplement.isAdd = false;
-              teaStore.removeSupplementMainBasket(supplement.id);
+              teaStore.removeSupplementsOnAddButton();
               teaStore.changeIsEnoughSupplements();
             };
             return (

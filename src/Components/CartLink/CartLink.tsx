@@ -8,6 +8,7 @@ import userBasketStore from "../../stores/userBasketStore";
 const CartLink: FC = () => {
   return (
     <Link to="/basket" className={classes.basketButton}>
+      {/* TODO:название классов */}
       <div className={classes.basketButton_icon}>
         <span className={classes.basketButton_counter}>{userBasketStore.userBasket.length}</span>
       </div>

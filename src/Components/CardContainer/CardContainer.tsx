@@ -1,9 +1,7 @@
-import classes from "./Cards.module.css";
-import { FC, ReactNode } from "react";
+import classes from "./CardContainer.module.css";
+import { FC } from "react";
 
-type Props = {
-  children: ReactNode;
-};
+type Props = React.PropsWithChildren;
 const Cards: FC<Props> = ({ children }) => {
   return <div className={classes.cards}>{children}</div>;
 };

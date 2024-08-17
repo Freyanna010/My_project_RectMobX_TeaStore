@@ -5,7 +5,9 @@ import Main from "./page/main";
 import {Route, Routes } from "react-router-dom";
 import UserBasket from "./page/userBasket";
 import About from "./page/about";
-import {animateScroll} from "react-scroll"
+// TODO:выдает ошибку
+// import {animateScroll} from "react-scroll"//
+import Login from "./page/login";
 
 
 const App: FC =  () => {
@@ -13,17 +15,16 @@ const App: FC =  () => {
     <div className="app">
       <Header />
       <div className="container-page">
-        {/*TODO: в компонент */}
+        {/*TODO: выдает ошибку*/}
         <div className="buttonUp">
-          <button onClick={() => animateScroll.scrollToTop()}>⏫</button>
+          {/* <button onClick={() => animateScroll.scrollToTop()}>⏫</button> */}
         </div>
 
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/basket" element={<UserBasket />} />
           <Route path="/about" element={<About />} />
-          //TODO: modal or page
-          {/* <Route path="/basket" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </div>

@@ -1,11 +1,11 @@
-import classes from "./Wrapper.module.css";
+import classes from "./GridPage.module.css";
 import { observer } from "mobx-react-lite";
 import { FC, ReactNode } from "react";
 
 type Props = {
   children: ReactNode[]
 }
-const Wrapper: FC<Props> = ({ children }) => {
+const GridPage: FC<Props> = ({ children }) => {
   return (
     // TODO: названия классов?
     <div className={classes.wrapper}>
@@ -17,4 +17,4 @@ const Wrapper: FC<Props> = ({ children }) => {
     </div>
   );
 };
-export default observer(Wrapper);
+export default observer(GridPage);

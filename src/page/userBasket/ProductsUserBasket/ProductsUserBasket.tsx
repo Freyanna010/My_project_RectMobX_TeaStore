@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 import { FC } from "react";
 import userBasketStore from "../../../stores/userBasketStore";
-import Cards from "../../../Components/Cards";
 import CardProductsUserBasket from "./CardProductsUserBasket/CardProductsUserBasket";
+import CardContainer from "../../../Components/CardContainer";
 
 const ProductsUserBasket: FC = () => {
   return (
@@ -12,9 +12,9 @@ const ProductsUserBasket: FC = () => {
           {userBasketStore.userBasket.map((basket) => {
             return (
               <li key={basket.id}>
-                <Cards>
+                <CardContainer>
                   <CardProductsUserBasket userBasket={basket} />
-                </Cards>
+                </CardContainer>
               </li>
             );
           })}

@@ -3,7 +3,7 @@ import CardSupplements from "./CardSupplements/CardSupplements";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
 import { FC } from "react";
-import Cards from "../../../Components/Cards";
+import CardContainer from "../../../Components/CardContainer";
 
 const MainSupplements: FC = () => {
   return (
@@ -12,17 +12,16 @@ const MainSupplements: FC = () => {
         const supplementsForCard = teaStore.supplements[collection.id];
         return (
           <div key={collection.id} id={collection.idScroll}>
-        
             {collection.isEnough && <div>IS ENOUGH!</div>}
             <div className={collection.isEnough ? classes.isEnough : ""}>
-              <Cards>
+              <CardContainer>
                 <CardSupplements
                   supplementsForCard={supplementsForCard}
                   id={collection.id}
                   isEnough={collection.isEnough}
-                  name =  {collection.name}
+                  name={collection.name}
                 />
-              </Cards>
+              </CardContainer>
             </div>
           </div>
         );

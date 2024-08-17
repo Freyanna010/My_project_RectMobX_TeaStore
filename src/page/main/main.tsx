@@ -4,7 +4,7 @@ import MainSupplements from "./MainSupplements";
 import MainBasket from "./MainBasket";
 import { observer } from "mobx-react-lite";
 import { FC } from "react";
-import Wrapper from "../../Components/Wrapper";
+import Wrapper from "../../Components/GridPage";
 
 
 const Main: FC = () => {
