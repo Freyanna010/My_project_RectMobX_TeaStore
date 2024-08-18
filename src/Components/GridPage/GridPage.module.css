@@ -1,0 +1,32 @@
+.wrapper {
+    display: grid;
+    grid-template-areas:
+        "a a a "
+        "b b c";
+    grid-template-rows: 1fr 6fr;
+    grid-template-columns: 6fr 1.5fr;
+    align-items: stretch
+
+}
+
+.wrapper_0 {
+    grid-area: a;
+    height: fit-content;
+}
+
+.wrapper_1 {
+    grid-area: b;
+}
+
+.wrapper_2 {
+    grid-area: c;
+    background-image: url(./../public/bg_basket_div.jpeg);
+    width: 400px;
+    height: 1050px;
+    margin: 30px 10px;
+    border-radius: 15px;
+}
+
+.wrapper_2:hover {
+    box-shadow: 0px 0px 6px 5px rgba(2, 35, 13, 0.58) inset;
+}

@@ -3,12 +3,14 @@ export type Supplement = {
   name: string;
   img: string;
   isAdd: boolean;
+  price: number;
 };
 
 export type CollectionSupplements = {
   id: string;
   name: string;
   isEnough: boolean;
+  idScroll: string;
 };
 
 export type Tea = {
@@ -17,4 +19,12 @@ export type Tea = {
   img: string;
   isEnough: boolean;
   description: string;
+  price: number;
+};
+// export type ProductForUserBasket = Pick<Supplement, "id" | "name" | "price">
+// export type UserBasket = ProductForUserBasket[];
+export type Product = {
+  id: string;
+  name: string[];
+  price: number;
 };

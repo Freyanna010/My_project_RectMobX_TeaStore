@@ -2,25 +2,47 @@ import classes from "./CardSupplements.module.css";
 import teaStore from "../../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
 import { Supplement } from "../../../../models";
-import { FC} from "react";
-import ButtonAddRemove from "../../../../Components/Button";
+import { FC, useEffect } from "react";
 import Button from "../../../../Components/Button";
-
+import userBasketStore from "../../../../stores/userBasketStore";
 
 type Props = {
   supplementsForCard: Supplement[];
   id: string;
-  isEnough: boolean
+  isEnough: boolean;
+  name: string;
 };
 const CardSupplements: FC<Props> = (props) => {
+  const onUpHandler = () => {
+    teaStore.sortByIncrement(props.id);
+  };
+  const onDownHandler = () => {
+    teaStore.sortByDecrement(props.id);
+  };
+   const onSortByNamesHandler = () => {
+    teaStore.sortByNames(props.id)
+  }
+
   return (
     <div>
       <div>
+        <div>
+          <h3>Choose a {props.name}</h3>
+          {/* TODO:перенести в компоненты*/}
+          Sort by price
+          <button onClick={onUpHandler}> ⬆ </button>
+          <button onClick={onDownHandler}> ⬇ </button>
+          <button onClick={onSortByNamesHandler}>sort by names</button>
+        </div>
+
+
         <ul className={classes.indigenous_card}>
           {props.supplementsForCard.map((supplement) => {
+         
             const onAddHandler = () => {
-              teaStore.addSupplementMainBasket(supplement.id, props.id);
+              teaStore.addSupplementToMainBasket(supplement.id, props.id);
               teaStore.changeIsEnoughSupplements();
+              teaStore.getSupplementPrice();
             };
             return (
               <li key={supplement.id}>
@@ -35,6 +57,7 @@ const CardSupplements: FC<Props> = (props) => {
                   <div className={classes.title}>
                     <h3>
                       {supplement.name}
+                      <p>{supplement.price} €</p>
                       <Button
                         onClick={onAddHandler}
                         type={"primary"}

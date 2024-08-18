@@ -4,23 +4,16 @@ import MainSupplements from "./MainSupplements";
 import MainBasket from "./MainBasket";
 import { observer } from "mobx-react-lite";
 import { FC } from "react";
+import Wrapper from "../../Components/GridPage";
 
 
 const Main: FC = () => {
   return (
-    <div className={classes.man}>
-      <div className={classes.man_tea}>
-        <MainTea />
-      </div>
-
-      <div className={classes.man_indigenous}>
-        <MainSupplements />
-      </div>
-
-      <div className={classes.man_basket}>
-        <MainBasket />
-      </div>
-    </div>
+    <Wrapper>
+      <MainTea />
+      <MainSupplements />
+      <MainBasket />
+    </Wrapper>
   );
 };
 export default observer(Main);

@@ -1,66 +1,14 @@
 import classes from "./MainTea.module.css";
 import { FC, useState } from "react";
-import Modal from "../../../Components/Modal";
-import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
-import Button from "../../../Components/Button";
+import CardMainTea from "./CardMainTea";
+import DescriptionMainTea from "./DescriptionMainTea";
 
 const MainTea: FC = () => {
-  const [modalActive, setModalActive] = useState<boolean>(false);
-  const [description, setDescription] = useState<string>("");
   return (
-    <div>
-      {
-        <ul className={classes.tea_card}>
-          {teaStore.tea.map((tea) => {
-            const onAddHandler = () => {
-              teaStore.addTeaMainBasket(tea.id);
-              teaStore.changeIsEnoughTea();
-            };
-            const onDescriptionHandler = () => {
-              setModalActive(true);
-              setDescription(tea.description);
-            };
-
-            return (
-              <li
-                key={tea.id}
-                className={tea.isEnough ? classes.tea_cardEnough : ""}
-              >
-                <div className={classes.icon}>
-                  <img src={tea.img} alt={tea.name} />
-                </div>
-                <div className={classes.title}>
-                  <h3>{tea.name}</h3>
-                  <Button
-                    onClick={onAddHandler}
-                    type={"primary"}
-                    shape={"round"}
-                    size={"large "}
-                  >
-                    <img src="./../../../../public/add_button.png" />
-                  </Button>
-                </div>
-                <div className={classes.button}>
-                  <Button
-                    onClick={onDescriptionHandler}
-                    type={"primary"}
-                    shape={"square"}
-                    size={"large "}
-                  >
-                    description
-                  </Button>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      }
-      <Modal
-        active={modalActive}
-        setActive={setModalActive}
-        text={description}
-      />
+    <div className={classes.mainTea}>
+      <DescriptionMainTea />
+      <CardMainTea />
     </div>
   );
 };

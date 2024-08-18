@@ -5,6 +5,7 @@ import {
   initialSupplementsState,
   initialTeaState,
 } from "./initialStates";
+
 class TeaStore {
   tea: Tea[] = initialTeaState;
   supplements: Record<string, Supplement[]> = initialSupplementsState;
@@ -12,6 +13,9 @@ class TeaStore {
     initialCollectionSupplementsState;
   mainTeaBasket: Tea[] = [];
   mainSupplementsBasket: Supplement[] = [];
+  teaPrice: number = 0;
+  supplementPrice: number = 0;
+  priceProductMainBasket: number = 0;
 
   constructor() {
     makeObservable(this, {
@@ -20,45 +24,58 @@ class TeaStore {
       collectionSupplements: observable,
       mainTeaBasket: observable,
       mainSupplementsBasket: observable,
-      addTeaMainBasket: action,
-      addSupplementMainBasket: action,
-      removeTeaMainBasket: action,
-      removeSupplementMainBasket: action,
+      priceProductMainBasket: observable,
+      teaPrice: observable,
+      supplementPrice: observable,
+      addTeaToMainBasket: action,
+      addSupplementToMainBasket: action,
+      removeTeaFromMainBasket: action,
+      removeSupplementFromMainBasket: action,
       changeIsEnoughTea: action,
       changeIsEnoughSupplements: action,
+      removeTeaOnAddButton: action,
+      removeSupplementsOnAddButton: action,
+      getSupplementPrice: action,
+      getTeaPrice: action,
+      getPriceForMainBasket: action,
+      sortByIncrement: action,
+      sortByDecrement: action,
     });
   }
 
-  addTeaMainBasket = (id: string) => {
-    const teaForMainBasket = this.tea.find((t) => t.id === id);
+  addTeaToMainBasket = (id: string) => {
+    const teaForMainBasket = this.tea.find((tea) => tea.id === id);
     if (this.mainTeaBasket.length < 1) {
       if (teaForMainBasket) this.mainTeaBasket.push(teaForMainBasket);
     } else {
       if (teaForMainBasket) this.mainTeaBasket[0] = teaForMainBasket;
     }
   };
-  addSupplementMainBasket = (id: string, collectionId: string) => {
+  addSupplementToMainBasket = (id: string, collectionId: string) => {
     const arrSupplements = this.supplements[collectionId];
-    const supplementForMainBasket = arrSupplements.find((s) => s.id === id);
+    const supplementForMainBasket = arrSupplements.find(
+      (supplement) => supplement.id === id
+    );
     const supplementOfMainBasket = this.mainSupplementsBasket.every(
       (i) => i.id !== id
     );
     if (this.mainSupplementsBasket.length < 6 && supplementOfMainBasket) {
       if (supplementForMainBasket) {
         this.mainSupplementsBasket.push(supplementForMainBasket);
-        // supplementForMainBasket.isAdd = true;
+        //TODO:переделать
+        supplementForMainBasket.isAdd = true;
       }
     }
   };
-  removeTeaMainBasket = () => {
-    this.mainTeaBasket.pop();
-    this.tea.forEach(t => t.isEnough = false)
+  removeTeaFromMainBasket = () => {
+    this.mainTeaBasket = [];
+    this.tea.forEach((tea) => (tea.isEnough = false));
   };
-  removeSupplementMainBasket = (id: string) => {    
+  removeSupplementFromMainBasket = (id: string) => {
     this.mainSupplementsBasket = this.mainSupplementsBasket.filter(
-      (s) => s.id !== id
-    );  
-  };  
+      (supplement) => supplement.id !== id
+    );
+  };
   changeIsEnoughTea = () => {
     this.tea.forEach((t) => {
       t.id === this.mainTeaBasket[0].id
@@ -67,10 +84,50 @@ class TeaStore {
     });
   };
   changeIsEnoughSupplements = () => {
-    this.collectionSupplements.forEach((i) => {
-    this.mainSupplementsBasket.length >= 6
-      ? (i.isEnough = true)
-      : (i.isEnough = false);
+    this.collectionSupplements.forEach((coll) => {
+      this.mainSupplementsBasket.length >= 6
+        ? (coll.isEnough = true)
+        : (coll.isEnough = false);
+    });
+  };
+  removeTeaOnAddButton = () => {
+    this.mainTeaBasket = [];
+  };
+  removeSupplementsOnAddButton = () => {
+    this.mainSupplementsBasket.splice(0, this.mainSupplementsBasket.length);
+  };
+  getTeaPrice = () => {
+    this.teaPrice = this.mainTeaBasket.map((tea) => tea.price)[0];
+    this.getPriceForMainBasket();
+  };
+  getSupplementPrice = () => {
+    this.supplementPrice = this.mainSupplementsBasket
+      .map((supplement) => supplement.price)
+      .reduce((acc, item) => acc + item);
+    this.getPriceForMainBasket();
+  };
+  getPriceForMainBasket = () => {
+    this.priceProductMainBasket = this.teaPrice + this.supplementPrice;
+    this.supplementPrice = 0;
+  };
+  sortByIncrement = (collectionId: string) => {
+    const arrSupplementsForSort = this.supplements[collectionId];
+    arrSupplementsForSort.sort((a, b) => a.price - b.price);
+  };
+  sortByDecrement = (collectionId: string) => {
+    const arrSupplementsForSort = this.supplements[collectionId];
+    arrSupplementsForSort.sort((a, b) => b.price - a.price);
+  };
+  sortByNames = (collectionId: string) => {
+    let arrSupplementsForSort = this.supplements[collectionId];
+    arrSupplementsForSort.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
     });
   };
 }
