@@ -28,7 +28,7 @@ const CardSupplements: FC<Props> = (props) => {
       <div>
         <div>
           <h3>Choose a {props.name}</h3>
-          {/* TODO:доделать кнопки */}
+          {/* TODO:перенести в компоненты*/}
           Sort by price
           <button onClick={onUpHandler}> ⬆ </button>
           <button onClick={onDownHandler}> ⬇ </button>

@@ -46,13 +46,12 @@ class TeaStore {
   addTeaToMainBasket = (id: string) => {
     const teaForMainBasket = this.tea.find((tea) => tea.id === id);
     if (this.mainTeaBasket.length < 1) {
-      //TODO: или через спред менять массив и возвращать его копию??? можно мутировать массив здесь???
       if (teaForMainBasket) this.mainTeaBasket.push(teaForMainBasket);
     } else {
       if (teaForMainBasket) this.mainTeaBasket[0] = teaForMainBasket;
     }
   };
-  addSupplementToMainBasket = (id: string, collectionId: string) => {    
+  addSupplementToMainBasket = (id: string, collectionId: string) => {
     const arrSupplements = this.supplements[collectionId];
     const supplementForMainBasket = arrSupplements.find(
       (supplement) => supplement.id === id
@@ -94,12 +93,11 @@ class TeaStore {
   removeTeaOnAddButton = () => {
     this.mainTeaBasket = [];
   };
-  // TODO:как лучше массив⬆⬇ ? 🙄
   removeSupplementsOnAddButton = () => {
     this.mainSupplementsBasket.splice(0, this.mainSupplementsBasket.length);
   };
   getTeaPrice = () => {
-    this.teaPrice = this.mainTeaBasket.map((tea) => tea.price)[0]; //TODO:так можно(в массиве всегда 1 объект)?🤗
+    this.teaPrice = this.mainTeaBasket.map((tea) => tea.price)[0];
     this.getPriceForMainBasket();
   };
   getSupplementPrice = () => {
@@ -122,8 +120,6 @@ class TeaStore {
   };
   sortByNames = (collectionId: string) => {
     let arrSupplementsForSort = this.supplements[collectionId];
-    // TODO: попытка lodash - ругается на  _.🤷🏻‍♀️
-    // arrSupplementsForSort = _.sortBy(arrSupplementsForSort, "name")
     arrSupplementsForSort.sort((a, b) => {
       if (a.name < b.name) {
         return -1;

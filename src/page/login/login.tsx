@@ -14,7 +14,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { grey, pink } from "@mui/material/colors";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-//TODO:Вынести?
+//TODO:Вынести
 const theme = createTheme({
   palette: {
     primary: {
@@ -26,7 +26,6 @@ const theme = createTheme({
   },
 });
 
-//TODO:тоже вынести в mоdеls? или там только бизнес-логика?
 type Input = {
   name: string;
   password: string;
@@ -45,13 +44,13 @@ const Login: FC = () => {
     setValue("password", "");
   };
 
-    const [showPassword, setShowPassword] = useState(false);
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const handleMouseDownPassword = (
-      event: React.MouseEvent<HTMLButtonElement>
-    ) => {
-      event.preventDefault();
-    };
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -118,4 +117,3 @@ const Login: FC = () => {
   );
 };
 export default observer(Login);
-    

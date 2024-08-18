@@ -4,7 +4,7 @@ import { FC, useState } from "react";
 import teaStore from "../../../../stores/teaStore";
 import Button from "../../../../Components/Button";
 
-// TODO:divide into components?
+
 const CardSupplementBasket: FC = () => {
   return (
     <div className={classes.man_basket}>
@@ -13,7 +13,7 @@ const CardSupplementBasket: FC = () => {
           <h2 className={classes.title}> supplements: </h2>
           {teaStore.mainSupplementsBasket.map((supplement) => {
             const onRemoveHandler = () => {
-              // TODO:ругается(на изменение вне стор), но по-другому пока не получилось😪
+              // TODO:перенести в Store
               supplement.isAdd = false;
               teaStore.removeSupplementsOnAddButton();
               teaStore.changeIsEnoughSupplements();

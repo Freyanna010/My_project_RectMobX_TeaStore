@@ -7,7 +7,7 @@ type Props = {
 }
 const GridPage: FC<Props> = ({ children }) => {
   return (
-    // TODO: названия классов?
+    // TODO: названия классов
     <div className={classes.wrapper}>
       <div className={classes.wrapper_0}>{children[0]}</div>
 

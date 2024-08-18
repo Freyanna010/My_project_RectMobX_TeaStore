@@ -13,7 +13,6 @@ class UserBasketStore {
       removeAllCardProduct: action,
     });
   }
-  //TODO:вот тут userBasket собираю
   addTeaAndSupplementToUserBasket = (
     mainTeaBasket: Tea[],
     mainSupplementsBasket: Supplement[] | []

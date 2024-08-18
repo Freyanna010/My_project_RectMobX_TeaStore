@@ -5,7 +5,7 @@ import Main from "./page/main";
 import {Route, Routes } from "react-router-dom";
 import UserBasket from "./page/userBasket";
 import About from "./page/about";
-// TODO:выдает ошибку
+// TODO:выдает ошибку-исправить
 // import {animateScroll} from "react-scroll"//
 import Login from "./page/login";
 

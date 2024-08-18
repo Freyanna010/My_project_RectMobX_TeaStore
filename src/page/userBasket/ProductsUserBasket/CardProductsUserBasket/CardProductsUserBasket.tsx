@@ -36,7 +36,6 @@ const CardProductsUserBasket: FC<Props> = ({ userBasket }) => {
       <div className={classes.cardProducts_name}>
         <ul>
           {userBasket.name.map((name) => {
-            //TODO: можно так ключ задать?
             return <li key={v1()}>{name}</li>;
           })}
         </ul>
