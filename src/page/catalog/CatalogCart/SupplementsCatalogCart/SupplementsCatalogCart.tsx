@@ -1,14 +1,15 @@
-import classes from "./CardSupplementBasket.module.css";
+import classes from "./SupplementsCatalogCart.module.css";
 import { observer } from "mobx-react-lite";
-import { FC, useState } from "react";
+import { FC } from "react";
 import teaStore from "../../../../stores/teaStore";
 import Button from "../../../../Components/Button";
 
 
-const CardSupplementBasket: FC = () => {
+const SupplementsCatalogCart: FC = () => {
   return (
     <div className={classes.man_basket}>
       <div className={classes.indigenous}>
+        {/* TODO:добавить компоненты */}
         <ul>
           <h2 className={classes.title}> supplements: </h2>
           {teaStore.mainSupplementsBasket.map((supplement) => {
@@ -49,4 +50,4 @@ const CardSupplementBasket: FC = () => {
   );
 };
 
-export default observer(CardSupplementBasket);
+export default observer(SupplementsCatalogCart);

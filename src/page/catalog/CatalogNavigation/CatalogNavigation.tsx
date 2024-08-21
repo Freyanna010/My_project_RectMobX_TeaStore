@@ -1,8 +1,8 @@
-import classes from "./NavigationBar.module.css";
+import classes from "./CatalogNavigation.module.css";
 import { FC } from "react";
 import { Link } from "react-scroll";
 
-const NavigationBar: FC = () => {
+const CatalogNavigation: FC = () => {
   return (
     <div className={classes.description}>
       <p className={classes.description_text}>
@@ -26,4 +26,4 @@ const NavigationBar: FC = () => {
   );
 };
 
-export default NavigationBar;
+export default CatalogNavigation;

@@ -1,15 +1,14 @@
-import MainBasket from "./BasketCart";
 import { FC } from "react";
 import GridPage from "../../Components/GridPage";
-import NavigationBar from "./NavigationBar";
 import TeaCatalog from "./TeaCatalog";
 import SupplementsCatalog from "./SupplementsCatalog";
-import CatalogBasket from "./BasketCart";
+import CatalogBasket from "./CatalogCart";
+import CatalogNavigation from "./CatalogNavigation";
 
 const Catalog: FC = () => {
   return (
     <>
-      <NavigationBar />
+      <CatalogNavigation />
       <GridPage>
         <TeaCatalog />
         <SupplementsCatalog />

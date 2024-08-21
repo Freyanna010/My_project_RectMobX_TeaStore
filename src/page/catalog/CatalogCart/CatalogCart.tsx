@@ -1,14 +1,15 @@
-import classes from "./BasketCart.module.css";
+import classes from "./CatalogCart.module.css";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
-import { FC, useState } from "react";
+import { FC } from "react";
 import Button from "../../../Components/Button";
 import userBasketStore from "../../../stores/userBasketStore";
-import CardTeaMainBasket from "./CardTeaMainBasket";
-import CardSupplementMainBasket from "./CardSupplementMainBasket";
-import CartLink from "../../../Components/CartLink";
+import CardSupplementMainBasket from "./SupplementsCatalogCart";
+import CartButton from "../../../Components/CartButton";
+import TeaCatalogCart from "./TeaCatalogCart";
+import SupplementsCatalogCart from "./SupplementsCatalogCart";
 
-const BasketCart: FC = () => {
+const CatalogCart: FC = () => {
   const onHandlerAddToCard = () => {
     userBasketStore.addTeaAndSupplementToUserBasket(
       teaStore.mainTeaBasket,
@@ -20,9 +21,12 @@ const BasketCart: FC = () => {
 
   return (
     <div className={classes.man_basket}>
-      <CartLink />
-      <CardTeaMainBasket />
-      <CardSupplementMainBasket />
+      <div>
+        <CartButton />
+        <TeaCatalogCart />
+        <SupplementsCatalogCart />
+      </div>
+
       {teaStore.mainTeaBasket.length > 0 &&
         teaStore.mainSupplementsBasket.length > 0 && (
           <div className={classes.buttons}>
@@ -34,11 +38,11 @@ const BasketCart: FC = () => {
             >
               add to card
             </Button>
-            Price: {teaStore.priceProductMainBasket}
+            <h2> Price: {teaStore.priceProductMainBasket}</h2>
           </div>
         )}
     </div>
   );
 };
 
-export default observer(BasketCart);
+export default observer(CatalogCart);
