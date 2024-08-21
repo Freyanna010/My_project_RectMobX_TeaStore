@@ -1,11 +1,11 @@
-import classes from "./MainSupplements.module.css";
-import CardSupplements from "./CardSupplements/CardSupplements";
+import classes from "./SupplementsCatalog.module.css";
+import SupplementsProducts from "./SupplementsProducts/SupplementsProducts";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
 import { FC } from "react";
 import CardContainer from "../../../Components/CardContainer";
 
-const MainSupplements: FC = () => {
+const SupplementsCatalog: FC = () => {
   return (
     <div>
       {teaStore.collectionSupplements.map((collection) => {
@@ -15,7 +15,7 @@ const MainSupplements: FC = () => {
             {collection.isEnough && <div>IS ENOUGH!</div>}
             <div className={collection.isEnough ? classes.isEnough : ""}>
               <CardContainer>
-                <CardSupplements
+                <SupplementsProducts
                   supplementsForCard={supplementsForCard}
                   id={collection.id}
                   isEnough={collection.isEnough}
@@ -30,4 +30,4 @@ const MainSupplements: FC = () => {
   );
 };
 
-export default observer(MainSupplements);
+export default observer(SupplementsCatalog);

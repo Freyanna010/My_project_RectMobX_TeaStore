@@ -1,4 +1,4 @@
-import classes from "./MainBasket.module.css";
+import classes from "./BasketCart.module.css";
 import teaStore from "../../../stores/teaStore";
 import { observer } from "mobx-react-lite";
 import { FC, useState } from "react";
@@ -8,7 +8,7 @@ import CardTeaMainBasket from "./CardTeaMainBasket";
 import CardSupplementMainBasket from "./CardSupplementMainBasket";
 import CartLink from "../../../Components/CartLink";
 
-const MainBasket: FC = () => {
+const BasketCart: FC = () => {
   const onHandlerAddToCard = () => {
     userBasketStore.addTeaAndSupplementToUserBasket(
       teaStore.mainTeaBasket,
@@ -41,4 +41,4 @@ const MainBasket: FC = () => {
   );
 };
 
-export default observer(MainBasket);
+export default observer(BasketCart);

@@ -1,10 +1,8 @@
-import classes from "./DescriptionMainTea.module.css";
+import classes from "./NavigationBar.module.css";
 import { FC } from "react";
-import { observer } from "mobx-react-lite";
-// TODO:выдает ошибку
-// import { Link } from "react-scroll";
+import { Link } from "react-scroll";
 
-function DescriptionMainTea() {
+const NavigationBar: FC = () => {
   return (
     <div className={classes.description}>
       <p className={classes.description_text}>
@@ -12,8 +10,7 @@ function DescriptionMainTea() {
         You can make your own unique tea. Choose a tea and add supplements to
         it:
       </p>
-      {/*  TODO:выдает ошибку */}
-      {/* <Link to="fruit" smooth={true} duration={1000} offset={-220}>
+      <Link to="fruit" smooth={true} duration={1000} offset={-220}>
         <p className={classes.description_link}>fruit supplements </p>
       </Link>
       <Link to="herbal" smooth={true} duration={1000} offset={-220}>
@@ -21,12 +18,12 @@ function DescriptionMainTea() {
       </Link>
       <Link to="spice" smooth={true} duration={1000} offset={-220}>
         <p className={classes.description_link}>spice supplements</p>
-      </Link> */}
+      </Link>
       <p className={classes.description_textSmall}>
         You can choose no more than six supplements.
       </p>
     </div>
   );
-}
+};
 
-export default observer(DescriptionMainTea);
+export default NavigationBar;

@@ -50,7 +50,6 @@ export const initialCollectionSupplementsState: CollectionSupplements[] = [
     name: "spice supplements",
     isEnough: false,
     idScroll: "spice",
-    
   },
 ];
 
