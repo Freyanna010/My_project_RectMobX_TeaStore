@@ -2,8 +2,7 @@ import { observer } from "mobx-react-lite";
 import classes from "./login.module.css";
 import { FC, useState } from "react";
 import {
-  Controller,
-  FieldValues,
+  Controller, 
   SubmitHandler,
   useForm,
   useFormState,
@@ -18,7 +17,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 const theme = createTheme({
   palette: {
     primary: {
-      main: grey[50],
+      main: grey[500],
     },
     error: {
       main: pink[500],
