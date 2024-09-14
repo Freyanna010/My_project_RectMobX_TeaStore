@@ -9,7 +9,7 @@ const SupplementsCatalogCart: FC = () => {
   return (
     <div className={classes.man_basket}>
       <div className={classes.indigenous}>
-        {/* TODO:добавить компоненты */}
+        {/* TODO:добавить компоненты? */}
         <ul>
           <h2 className={classes.title}> supplements: </h2>
           {teaStore.mainSupplementsBasket.map((supplement) => {

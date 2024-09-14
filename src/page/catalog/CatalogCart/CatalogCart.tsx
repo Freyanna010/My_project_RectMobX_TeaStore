@@ -4,7 +4,6 @@ import { observer } from "mobx-react-lite";
 import { FC } from "react";
 import Button from "../../../Components/Button";
 import userBasketStore from "../../../stores/userBasketStore";
-import CardSupplementMainBasket from "./SupplementsCatalogCart";
 import CartButton from "../../../Components/CartButton";
 import TeaCatalogCart from "./TeaCatalogCart";
 import SupplementsCatalogCart from "./SupplementsCatalogCart";
