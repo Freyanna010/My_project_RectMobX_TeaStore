@@ -1,7 +1,7 @@
 import classes from "./SupplementProduct.module.css";
 import { observer } from "mobx-react-lite";
 import { FC } from "react";
-import teaStore from "../../../../../stores/teaStore";
+import teaStore from "../../../../../stores/catalogStore";
 import Button from "../../../../../Components/Button";
 import { CollectionSupplements, Supplement } from "../../../../../models";
 

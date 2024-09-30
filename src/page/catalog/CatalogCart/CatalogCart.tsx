@@ -1,5 +1,5 @@
 import classes from "./CatalogCart.module.css";
-import teaStore from "../../../stores/teaStore";
+import teaStore from "../../../stores/catalogStore";
 import { observer } from "mobx-react-lite";
 import { FC } from "react";
 import Button from "../../../Components/Button";

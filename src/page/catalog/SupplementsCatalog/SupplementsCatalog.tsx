@@ -1,6 +1,6 @@
 import classes from "./SupplementsCatalog.module.css";
 import SupplementsProducts from "./SupplementsProducts/SupplementsProducts";
-import teaStore from "../../../stores/teaStore";
+import teaStore from "../../../stores/catalogStore";
 import { observer } from "mobx-react-lite";
 import { FC } from "react";
 import CardContainer from "../../../Components/CardContainer";

@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import classes from "./CardProductsUserBasket.module.css";
 import { FC, useEffect, useState } from "react";
-import teaStore from "../../../../stores/teaStore";
+import teaStore from "../../../../stores/catalogStore";
 import userBasketStore from "../../../../stores/userBasketStore";
 import { Product } from "../../../../models";
 import { v1 } from "uuid";

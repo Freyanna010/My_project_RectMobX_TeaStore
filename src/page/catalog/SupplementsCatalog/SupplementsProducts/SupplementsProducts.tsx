@@ -1,5 +1,5 @@
 import classes from "./SupplementsProducts.module.css";
-import teaStore from "../../../../stores/teaStore";
+import teaStore from "../../../../stores/catalogStore";
 import { observer } from "mobx-react-lite";
 import { Supplement } from "../../../../models";
 import { FC, useEffect } from "react";

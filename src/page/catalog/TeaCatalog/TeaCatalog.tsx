@@ -1,7 +1,7 @@
 import classes from "./TeaCatalog.module.css";
 import { FC } from "react";
 import { observer } from "mobx-react-lite";
-import teaStore from "../../../stores/teaStore";
+import teaStore from "../../../stores/catalogStore";
 import TeaProduct from "./TeaProduct";
 
 const TeaCatalog: FC = () => {

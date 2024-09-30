@@ -1,7 +1,7 @@
 import classes from "./TeaCatalogCart.module.css";
 import { observer } from "mobx-react-lite";
 import { FC, useState } from "react";
-import teaStore from "../../../../stores/teaStore";
+import teaStore from "../../../../stores/catalogStore";
 import Button from "../../../../Components/Button";
 
 const TeaCatalogCart: FC = () => {

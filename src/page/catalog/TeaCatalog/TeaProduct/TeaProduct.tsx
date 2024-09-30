@@ -1,7 +1,7 @@
 import classes from "./TeaProduct.module.css";
 import { FC, useState } from "react";
 import { observer } from "mobx-react-lite";
-import teaStore from "../../../../stores/teaStore";
+import teaStore from "../../../../stores/catalogStore";
 import Button from "../../../../Components/Button";
 import Modal from "../../../../Components/Modal";
 import { Tea } from "../../../../models";
